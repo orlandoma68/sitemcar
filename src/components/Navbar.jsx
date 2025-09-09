@@ -10,13 +10,13 @@ const Navbar = () => {
   }
   return (
     <nav className="navbar navbar-expand-lg text-dark" style={{backgroundColor: '#e3f2fd'}}>
-        <Link className="navbar-brand text-primary mx-5" to="/">SISCAR</Link>
+        <Link className="navbar-brand text-primary mx-5 fs-2" to="/">SISCAR</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav mr-auto mx-3">
                 <li className="nav-item active"><Link className="nav-link text-dark" to="/">Home <span className="sr-only">(current)</span></Link></li>
                 <li className="nav-item"><Link className="nav-link text-dark" to="/contact">Contact</Link></li>
                 <li className="nav-item"><Link className="nav-link text-dark" to="/about">About</Link></li>
@@ -30,14 +30,13 @@ const Navbar = () => {
                 </li>
             </ul>
             <form className='d-flex my-2 my-lg-0'onSubmit={handleSubmit(enviar)} >
-                <input className='form-control mr-sm-2' type="search" placeholder='Search' {...register('Search')}aria-label="Search"/>
-                <button className='btn btn-outline-primary my-2 my-sm-0 mx-3 text-dark' type='submit'>Search </button>
+                <input className='form-control mr-sm-2 mx-3' type="search" placeholder='Search' {...register('Search')}aria-label="Search"/>
+                <button className='btn btn-outline-primary my-2 my-sm-0 mx-3' type='submit'>Search </button>
             </form>
             <div className="nav-item"><Link className="nav-link text-dark m-4" to="/login">Login</Link></div>
             <div className='m-3 btn btn-outline-primary'><CarritoWidget/></div>
         </div>
     </nav>
-
     
   )
 }

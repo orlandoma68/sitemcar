@@ -9,8 +9,8 @@ const CarritoWidget = () => {
 
   return (
     <div>
-      <Link className='text-decoration-none d-flex align-items-center text-dark' to="/carrito">
-        <span > 
+      <Link className='text-decoration-none d-flex align-items-center' to="/carrito">
+        <span className='text-dark' > 
           <i className="fa-solid fa-cart-shopping"></i><sup className='rounded-5 mx-1'>{cantidadProductosCarrito()}</sup>
            Carrito    
         </span>        
