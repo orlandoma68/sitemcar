@@ -16,7 +16,6 @@ import PageErr from './components/PageErr'
 const App = () => {
 
   return ( 
-
     <CarritoContextProvider>      
       <BrowserRouter>
         <Navbar/>
