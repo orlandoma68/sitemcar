@@ -1,0 +1,110 @@
+          <div className='d-flex bg-dark p-4 gap-3 justify-content-center'>
+
+              <div className='d-flex bg-white p-5'>
+
+                  { carrito.length > 0 ? 
+
+                    <div className='bg-white d-flex flex-column justify-content-center'>
+                        <h3>Carrito</h3>
+                        <hr></hr>
+                        <table className="table table-responsive">
+                            <thead>
+                              <tr>
+                                <th className='pb-3' scope="col"></th>
+                                <th className='pb-3' scope="col">Nombre</th>
+                                <th className='pb-3' scope="col">Cant.</th>
+                                <th className='pb-3' scope="col">Precio Unit.</th>
+                                <th className='pb-3' scope="col">Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                  carrito.map((prod)=> 
+                                  <tr key={prod.id}> 
+                                    <td className='p-2'><img src={prod.img} alt={prod.nombre} className="img-fluid w-100" style={{height: 100 +'px', objectFit:'cover'}  }/></td>
+                                    <td className='p-2'>{prod.nombre}</td> 
+                                    <td className='p-2'>{prod.cantidad}</td> 
+                                    <td className='p-2'>{prod.precio}</td> 
+                                    <td className='p-2'>{(prod.precio * prod.cantidad).toFixed(2)}</td> 
+                                  </tr>)
+                                }
+                            </tbody>
+                        </table> 
+
+                        <button className='btn btn-outline-primary m-2' onClick={vaciarCarrito}>Vaciar Carrito</button>
+                    </div> : 
+                        <div className='bg-white p-5 d-flex justify-content-center'>
+                            <h4>El carrito esta vacio :) </h4>
+                        </div>
+                        
+                  } 
+                                
+              </div>
+
+              <div className='bg-white p-3 d-flex flex-column align-items-center'>
+                <h5 className='my-2'>SubTotal ({cantidadProductosCarrito()} Productos) : US$ { totalPagar() }</h5>
+                <Link className='btn btn-outline-primary my-2' to="/login"><span >Proceder a Pagar</span></Link>
+              </div>
+
+          </div>
+        )    
+}
+
+
+seguno fuente
+
+<div className='container'>
+
+        <div className='row'>
+
+            { carrito.length > 0 ? 
+
+              <div className='col-md-6'>
+                  <h5>Carrito</h5>
+                  <hr></hr>
+                  <table className="table table-responsive">
+                      <thead>
+                        <tr>
+                          <th className='pb-3' scope="col"></th>
+                          <th className='pb-3' scope="col">Nombre</th>
+                          <th className='pb-3' scope="col">Cant.</th>
+                          <th className='pb-3' scope="col">Precio Unit.</th>
+                          <th className='pb-3' scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {
+                            carrito.map((prod)=> 
+                            <div key={prod.id}> 
+                              <div className='p-2'><img src={prod.img} alt={prod.nombre} className="img-fluid w-100" style={{height: 100 +'px', objectFit:'cover'}  }/></div>
+                              <h4 className='p-2'>{prod.nombre}</h4> 
+                              <p className='p-2'>{prod.cantidad}</p> 
+                              <p className='p-2'>{prod.precio}</p> 
+                              <p className='p-2'>{(prod.precio * prod.cantidad).toFixed(2)}</p> 
+                            </div>)
+                          }
+                      </tbody>
+                  </table> 
+                  <button className='btn btn-outline-primary' onClick={vaciarCarrito}>Vaciar Carrito</button>
+              </div> : 
+                  <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center'>
+                      <h4>El carrito esta vacio :) </h4>
+                      <div className='m-5'>
+                        <Link className='btn btn-outline-primary mx-2' to="/login"><span >Inicia en tu Cuenta</span></Link>
+                        <Link className='btn btn-outline-primary mx-2' to="/registrar"><span >Registrate</span></Link>
+                      </div>
+                  </div>                 
+            } 
+             {(carrito.length > 0) &&
+                  <div className='col-md-6'>
+                      <h5 className='my-2'>SubTotal ({cantidadProductosCarrito()} Productos) : US$ { totalPagar() }</h5>
+                      <Link className='btn btn-outline-primary my-2' to="/login"><span >Proceder a Pagar</span></Link>
+                  </div>
+              }
+                
+    </div>
+
+
+</div>
+
+  )

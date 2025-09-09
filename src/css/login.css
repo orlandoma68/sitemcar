@@ -1,0 +1,76 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    margin: 50px auto;
+    padding: 10px 40px;
+    border: 1px solid rgb(224, 206, 190);
+    border-radius: 5px;
+ }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: medium;
+    padding: 5px;
+    margin: 20px;
+ }
+
+ .titulo{
+    text-align: center;
+    margin: 20px auto;
+    color: rgb(85, 83, 83);
+    font-size: 1.6em;
+}
+
+.box{
+   display: flex;
+   flex-direction: column;
+   height: 35px;
+   width: 260px;
+   padding: 5px;
+   border-width: 1px;
+   margin:10px;
+   border: 1px solid rgb(224, 206, 190);
+
+}
+
+.boton:hover{
+    background-color:transparent;
+    border: rgb(9, 157, 194) solid 1px; 
+    color: rgb(9, 157, 194);
+    transition: 100ms ease-in-out;
+    border-radius: 4px;
+    padding: 10px 5px;
+}
+
+.boton{
+    background-color:rgb(9, 157, 194);
+    border-radius: 4px;
+    border: unset;
+    padding: 10px 5px;
+    font-size: medium;
+    width: 260px;
+    color:white;
+    cursor: pointer;
+    transition: background-color (3s);
+    margin: 10px;
+}
+
+.link-cuenta, .link-olvido{
+    text-decoration: none;
+}
+
+.txt-msje{
+    text-align: justify;
+    margin-top: 20px;
+}
+
+input:focus{
+    border: 1px solid rgb(9, 157, 194); 
+    outline: 1px rgb(9, 157, 194); 
+}
+
