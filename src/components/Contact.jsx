@@ -16,7 +16,7 @@ const Contact = () => {
             <input className='box' type="text" placeholder='Nombre' {...register('nombre')}/>
             <input className='box' type="email" placeholder='Email' {...register('email')}/>
             <input className='box' type="phone" placeholder='Telefono' {...register('telefono')}/>
-            <button className='boton' type='submit'>Enviar</button>
+            <button className='boton btn btn-outline-dark' type='submit'>Enviar</button>
         </form>
     </div>
   )
