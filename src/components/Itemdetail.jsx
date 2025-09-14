@@ -7,7 +7,7 @@ const Itemdetail = ({item}) => {
 
     const {agregarProductosCarrito, sacarProductosCarrito, eliminarProductosCarrito} = useContext(CarritoContext)
 
-    const [cantidad, setCantidad] = useState(1)
+    const [cantidad,setCantidad] = useState(1)
     
   return (
     <>

@@ -12,6 +12,8 @@ import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
 import { CarritoContextProvider } from './context/CarritoContext'
 import PageErr from './components/PageErr'
+import Protected from './components/Protected'
+import Admin from './components/Admin'
 
 const App = () => {
 
@@ -32,6 +34,9 @@ const App = () => {
           <Route path='/carrito' element ={<Carrito/>}/>
           <Route path='/pageerr' element ={<PageErr/>}/>
           <Route path="*" element={<PageErr />} />
+          <Route element = {<Protected acceder ={false}/>}>
+              <Route path='/admin' element ={<Admin/>}/>
+          </Route>
         </Routes>
       </BrowserRouter>
     </CarritoContextProvider>

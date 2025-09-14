@@ -38,6 +38,8 @@ export const CarritoContextProvider = ({children})=>{
     }
 
     const agregarProductosCarrito = (item, cantidad)=>{
+
+        console.log(item, "itemm.... carrito")
       
         const itemAgregado = {...item, cantidad}
 
@@ -70,7 +72,7 @@ export const CarritoContextProvider = ({children})=>{
     }
 
     return(
-    <CarritoContext.Provider value={{carrito, setCarrito, agregarProductosCarrito,cantidadProductosCarrito, totalPagar, vaciarCarrito,esta,cant, setEsta,sacarProductosCarrito,eliminarProductosCarrito}}>
+    <CarritoContext.Provider value={{carrito, setCarrito, agregarProductosCarrito,cantidadProductosCarrito, totalPagar, vaciarCarrito,esta,cant,setEsta,sacarProductosCarrito,eliminarProductosCarrito}}>
         { children }
     </CarritoContext.Provider>    
        

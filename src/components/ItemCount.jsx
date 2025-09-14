@@ -9,7 +9,7 @@ const ItemCount = ({handleSacarCarrito, handleEliminarCarrito, handleAgregarCarr
   return (     
             <div className="d-flex flex-column justify-content-center">
                 {esta ?(  
-                <div className='border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width: 11 +'rem'}}>
+                <div className='border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width:11+'rem'}}>
                     {cant === 1 ? 
                         <button onClick={handleEliminarCarrito} className='btn border-0 px-4'><i className="fa-solid fa-trash"></i></button> :
                         <button onClick={handleSacarCarrito} className='btn border-0 px-4'>-</button>
