@@ -23,7 +23,6 @@ const Listproducts = () => {
             }
             setIsLoading(false)
         })   
-
         
     },[categoria,isLoading])
 

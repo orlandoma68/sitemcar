@@ -9,15 +9,12 @@ const Carrito = () => {
   const cantidades = 1
 
   return (
-        <div className='container'>
-
-            <div className='row'>
-
+        <div className='bg-light p-4'>
+            <div className='row justify-content-center'>
                 { carrito.length > 0 ? 
-
-                  <div className='col-md-8'>
+                  <div className='col-md-9 bg-white p-3'>
                       <h5>Carrito</h5>
-                      <div className="container" >
+                      <div>
                               <h6 className='d-flex justify-content-end'>Precio</h6>
                               <hr />
                               {                                
@@ -36,7 +33,7 @@ const Carrito = () => {
                                               <p className='mx-2 my-1'><sup>US$ </sup><span className='fs-5'>{prod.precio}</span></p> 
                                             </div>                                
                                           </div>
-                                          <p className='mx-2 my-1'>{(prod.precio * prod.cantidad).toFixed(2)}</p> 
+                                          <p className='mx-2 my-1'>Subtotal:{(prod.precio * prod.cantidad).toFixed(2)}</p> 
                                         <div className='d-flex flex-column'>
                                           <div className='mx-2 my-1 border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width: 10 +'rem'}}>
                                               {prod.cantidad === 1 ? 
@@ -51,7 +48,7 @@ const Carrito = () => {
                                 </div> )                            
                               }
                       </div> 
-                      <button className='btn btn-outline-primary' onClick={vaciarCarrito}>Vaciar Carrito</button>
+                      <button className='btn btn-outline-primary m-3' onClick={vaciarCarrito}>Vaciar Carrito</button>
                   </div> : 
                       <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center'>
                           <h4>El carrito esta vacio :) </h4>
@@ -61,12 +58,15 @@ const Carrito = () => {
                           </div>
                       </div>                 
                 } 
+                <div className='col-md-1 bg-light gx-4 w-auto'>
+                </div>
 
-                {(carrito.length > 0) &&
-                      <div className='col-md-4'>
-                          <h5 className='my-2'>SubTotal ({cantidadProductosCarrito()} Productos) : US$ { totalPagar() }</h5>
-                          <Link className='btn btn-outline-primary my-2' to="/login"><span >Proceder a Pagar</span></Link>
-                      </div>
+                { (carrito.length > 0) &&
+                
+                  <div className='col-md-2 bg-white  d-flex align-items-center flex-column'>
+                      <h5 className='my-2'>Total: ({cantidadProductosCarrito()} Productos) : US$ { totalPagar() }</h5>
+                      <Link className='btn btn-outline-primary' to="/login"><span >Proceder a Pagar</span></Link>
+                  </div>
                 }
             </div>
         </div>

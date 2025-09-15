@@ -30,3 +30,15 @@ export const pedirProductosCategoria = (categoria)=>{
         }
     })
 }
+
+export const pedirProductosNombre = (nombre)=>{
+
+    return new Promise ((resolve, reject)=>{
+        const itemNombre = data.filter((prod)=>prod.nombre.toLowerCase().includes(nombre.toLowerCase()));
+        if (itemNombre){
+            resolve(itemNombre)
+        }else{
+            reject("error al traer la data")
+        }
+    })
+}
