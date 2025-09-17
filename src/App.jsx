@@ -35,7 +35,7 @@ const App = () => {
           <Route path={`/${repoName}/carrito`} element ={<Carrito/>}/>
           <Route path={`/${repoName}/pageerr`} element ={<PageErr/>}/>
           <Route path={`/${repoName}/search/:termino`} element ={<ProductoSearch/>}/>
-          <Route path="*" element={<PageErr />} />
+          <Route path={`/${repoName}/*`} element={<PageErr />} />
 
           <Route element = {<Protected acceder ={false}/>}>
               <Route path={`/${repoName}/admin`} element ={<Admin/>}/>
