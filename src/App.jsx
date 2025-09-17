@@ -17,28 +17,28 @@ import Admin from './components/Admin'
 import ProductoSearch from './components/ProductoSearch'
 
 const App = () => {
-
+  const repoName = "sitemcar";
   return ( 
     <CarritoContextProvider>      
       <BrowserRouter base='/sitemcar/'>
         <Navbar/>
         <Routes>
-          <Route path='/' element ={<Home/>}/>
-          <Route path='/about' element ={<About/>}/>
-          <Route path='/contact' element ={<Contact/>}/>
-          <Route path='/products' element ={<Products/>}/>
-          <Route path='/product/:categoria' element ={<Products/>}/>
-          <Route path='/login' element ={<Login/>}/>
-          <Route path='/registrar' element ={<Registrar/>}/>
-          <Route path='/lostpass' element ={<Lostpass/>}/>
-          <Route path='/item/:id' element ={<Itemdetailcontain/>}/>
-          <Route path='/carrito' element ={<Carrito/>}/>
-          <Route path='/pageerr' element ={<PageErr/>}/>
-          <Route path='/search/:termino' element ={<ProductoSearch/>}/>
+          <Route path={`/${repoName}`}  element ={<Home/>}/>
+          <Route path={`/${repoName}/about`} element ={<About/>}/>
+          <Route path={`/${repoName}/contact`} element ={<Contact/>}/>
+          <Route path={`/${repoName}/products`} element ={<Products/>}/>
+          <Route path={`/${repoName}/product/:categoria`} element ={<Products/>}/>
+          <Route path={`/${repoName}/login`} element ={<Login/>}/>
+          <Route path={`/${repoName}/registrar`} element ={<Registrar/>}/>
+          <Route path={`/${repoName}/lostpass`} element ={<Lostpass/>}/>
+          <Route path={`/${repoName}/item/:id`} element ={<Itemdetailcontain/>}/>
+          <Route path={`/${repoName}/carrito`} element ={<Carrito/>}/>
+          <Route path={`/${repoName}/pageerr`} element ={<PageErr/>}/>
+          <Route path={`/${repoName}/search/:termino`} element ={<ProductoSearch/>}/>
           <Route path="*" element={<PageErr />} />
 
           <Route element = {<Protected acceder ={false}/>}>
-              <Route path='/admin' element ={<Admin/>}/>
+              <Route path={`/${repoName}/admin`} element ={<Admin/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
