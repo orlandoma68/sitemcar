@@ -9,7 +9,7 @@ const Carrito = () => {
   const cantidades = 1
 
   return (
-        <div className='bg-light p-4'>
+        <div className='p-4' style={{backgroundColor:"#e3f2fd"}}>
             <div className='row justify-content-center'>
                 { carrito.length > 0 ? 
                   <div className='col-md-9 bg-white p-3'>
@@ -58,7 +58,7 @@ const Carrito = () => {
                           </div>
                       </div>                 
                 } 
-                <div className='col-md-1 bg-light gx-4 w-auto'>
+                <div className='col-md-1 gx-4 w-auto'style={{backgroundColor:"#e3f2fd"}} >
                 </div>
 
                 { (carrito.length > 0) &&

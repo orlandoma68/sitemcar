@@ -30,7 +30,7 @@ const Registrar = () => {
                 <input type="password" className="form-control box" id="exampleInputPassword1" placeholder="Password" {...register('password')}/>
               </div>
               <div className="form-group">
-                <label className='mx-3' for="exampleInputPassword1">vuelva a ingresar tu contraseña</label>
+                <label className='mx-3' for="exampleInputPassword1">Confirmar contraseña</label>
                 <input type="password" className="form-control box" id="exampleInputPassword1" placeholder="Password" {...register('nuevoPassword')}/>
               </div>
 

@@ -20,7 +20,7 @@ const App = () => {
 
   return ( 
     <CarritoContextProvider>      
-      <BrowserRouter>
+      <BrowserRouter base='/sitemcar/'>
         <Navbar/>
         <Routes>
           <Route path='/' element ={<Home/>}/>
