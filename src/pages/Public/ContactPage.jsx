@@ -1,7 +1,7 @@
 import React from 'react'
 import  {useForm} from "react-hook-form"
 
-const Contact = () => {
+const ContactPage = () => {
 
   const {register, handleSubmit} = useForm();
 
@@ -22,4 +22,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default ContactPage

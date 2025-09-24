@@ -21,10 +21,10 @@ const Listproducts = () => {
             }else{
                 setProductos(res)
             }
-            setIsLoading(false)
+            setIsLoading(false)                        
         })   
         
-    },[categoria,isLoading])
+    },[categoria])
 
   return (
     <div >

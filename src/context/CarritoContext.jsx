@@ -38,8 +38,6 @@ export const CarritoContextProvider = ({children})=>{
     }
 
     const agregarProductosCarrito = (item, cantidad)=>{
-
-        console.log(item, "itemm.... carrito")
       
         const itemAgregado = {...item, cantidad}
 

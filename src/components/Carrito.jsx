@@ -35,13 +35,13 @@ const Carrito = () => {
                                           </div>
                                           <p className='mx-2 my-1'>Subtotal:{(prod.precio * prod.cantidad).toFixed(2)}</p> 
                                         <div className='d-flex flex-column'>
-                                          <div className='mx-2 my-1 border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width: 10 +'rem'}}>
+                                          <div className='mx-2 my-1 border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width: 9.5 +'rem'}}>
                                               {prod.cantidad === 1 ? 
-                                                  <button onClick={()=>{eliminarProductosCarrito(prod)}} className='btn border-0 px-4'><i className="fa-solid fa-trash"></i></button> :
-                                                  <button onClick={()=>{sacarProductosCarrito(prod,cantidades)}} className='btn border-0 px-4'>-</button>
+                                                  <button onClick={()=>{eliminarProductosCarrito(prod)}} className='btn border-0 px-4 btn-outline-primary rounded-start-5'><i className="fa-solid fa-trash"></i></button> :
+                                                  <button onClick={()=>{sacarProductosCarrito(prod,cantidades)}} className='btn border-0 px-4 btn-outline-primary rounded-start-5'>-</button>
                                               }
                                               <h6 className="px-3">{ prod.cantidad }</h6>
-                                              <button onClick={()=>agregarProductosCarrito(prod, cantidades)} className='btn border-0 px-4'>+</button>
+                                              <button onClick={()=>agregarProductosCarrito(prod, cantidades)} className='btn border-0 px-4 btn-outline-primary rounded-end-5'>+</button>
                                           </div>                                          
                                         </div>
                                     </div>
@@ -53,8 +53,8 @@ const Carrito = () => {
                       <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center'>
                           <h4>El carrito esta vacio :) </h4>
                           <div className='m-5'>
-                            <Link className='btn btn-outline-primary mx-2' to="/login"><span >Inicia en tu Cuenta</span></Link>
-                            <Link className='btn btn-outline-primary mx-2' to="/registrar"><span >Registrate</span></Link>
+                            <Link className='btn btn-outline-primary mx-2' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
+                            <Link className='btn btn-outline-primary mx-2' to="../../auth/register"><span >Registrate</span></Link>
                           </div>
                       </div>                 
                 } 
@@ -65,7 +65,7 @@ const Carrito = () => {
                 
                   <div className='col-md-2 bg-white  d-flex align-items-center flex-column'>
                       <h5 className='my-2'>Total: ({cantidadProductosCarrito()} Productos) : US$ { totalPagar() }</h5>
-                      <Link className='btn btn-outline-primary' to="/login"><span >Proceder a Pagar</span></Link>
+                      <Link className='btn btn-outline-primary' to="/checkout"><span >Proceder a Pagar</span></Link>
                   </div>
                 }
             </div>

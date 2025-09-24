@@ -1,8 +1,7 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 
-const PageErr = () => {
+const NotFoundPage = () => {
   return (
       <section className='container'>
         <div className='col text-center'>
@@ -14,4 +13,4 @@ const PageErr = () => {
   )
 }
 
-export default PageErr
+export default NotFoundPage

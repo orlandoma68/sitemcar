@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Item from './Item'
-import {pedirProductosNombre} from "../js/pedirProductos"
+import Item from '../../components/Item'
+import {pedirProductosNombre} from "../../js/pedirProductos"
 
-const ProductoSearch = () => {
+const SearchPage = () => {
 
   const [productos, setProductos] = useState([])
 
@@ -31,4 +31,4 @@ const ProductoSearch = () => {
   )
 }
 
-export default ProductoSearch
+export default SearchPage

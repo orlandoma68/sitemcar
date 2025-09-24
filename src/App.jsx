@@ -1,47 +1,66 @@
 
 import Navbar from './components/Navbar'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import About from './components/About'
-import Home from './components/Home'
-import Contact from './components/Contact'
-import Login from './components/Login'
-import Registrar from './components/Registrar'
-import Lostpass from './components/Lostpass'
-import Products from './components/Products'
+import { CarritoContextProvider } from './context/CarritoContext'
+import RootLayout from './Layouts/RootLayout'
+import PublicLayout from './Layouts/PublicLayout'
+import AuthLayout from './Layouts/AuthLayout'
+import HomePage from './pages/Public/HomePage'
+import NotFoundPage from './pages/Public/NotFoundPage'
+import DasboardPage from './pages/admin/DasboardPage'
+import ProfilePage from './pages/admin/ProfilePage'
+import LoginPage from './pages/auth/LoginPage'
+import RegisterPage from './pages/auth/RegisterPage'
+import ContactPage from './pages/Public/ContactPage'
+import AboutPage from './pages/Public/AboutPage'
+import LostpassPage from './pages/auth/LostpassPage'
+import SearchPage from './pages/Public/SearchPage'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
-import { CarritoContextProvider } from './context/CarritoContext'
-import PageErr from './components/PageErr'
-import Protected from './components/Protected'
-import Admin from './components/Admin'
-import ProductoSearch from './components/ProductoSearch'
+import Checkout from './components/Checkout'
+import { AuthContextProvider } from './context/AuthContext'
+import AdminLayout from './layouts/AdminLayout'
 
 const App = () => {
 
   return ( 
-    <CarritoContextProvider>      
-      <BrowserRouter>
-        <Navbar/>
-        <Routes>
-          <Route path='/' element ={<Home/>}/>
-          <Route path='/about' element ={<About/>}/>
-          <Route path='/contact' element ={<Contact/>}/>
-          <Route path='/products' element ={<Products/>}/>
-          <Route path='/product/:categoria' element ={<Products/>}/>
-          <Route path='/login' element ={<Login/>}/>
-          <Route path='/registrar' element ={<Registrar/>}/>
-          <Route path='/lostpass' element ={<Lostpass/>}/>
-          <Route path='/item/:id' element ={<Itemdetailcontain/>}/>
-          <Route path='/carrito' element ={<Carrito/>}/>
-          <Route path='/pageerr' element ={<PageErr/>}/>
-          <Route path='/search/:termino' element ={<ProductoSearch/>}/>
-          <Route path="*" element={<PageErr />} />
-          <Route element = {<Protected acceder ={false}/>}>
-              <Route path='/admin' element ={<Admin/>}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </CarritoContextProvider>
+    
+      <AuthContextProvider>
+        <CarritoContextProvider>      
+          <BrowserRouter>
+            <Navbar/>
+            <Routes>
+              <Route element={<RootLayout/>}>
+
+                {/* ruta publica*/}
+                <Route element={<PublicLayout/>}>
+                    <Route index element={<HomePage />}/>
+                    <Route path='contact' element={<ContactPage />}/>
+                    <Route path='about' element={<AboutPage />}/>
+                    <Route path='search/:termino' element={<SearchPage />}/>
+                    <Route path='*' element={<NotFoundPage />}/>
+                    <Route path='item/:id' element ={<Itemdetailcontain/>}/>
+                    <Route path='carrito' element ={<Carrito/>}/>
+                    <Route path="checkout" element={<Checkout />} />
+                </Route>
+
+                {/* ruta Administracion*/}
+                <Route path='admin' element={<AdminLayout/>}>
+                    <Route index element={<DasboardPage />}/>
+                    <Route path='profile' element={<ProfilePage />}/>
+                </Route>
+                
+                {/* ruta autenticacion*/}
+                <Route path='auth' element={<AuthLayout/>}>
+                    <Route path='login' element={<LoginPage />}/>
+                    <Route path='register' element={<RegisterPage />}/>
+                    <Route path='lostpass' element={<LostpassPage />}/>
+                </Route>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </CarritoContextProvider>
+    </AuthContextProvider>
   )
 }
 
