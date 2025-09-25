@@ -20,6 +20,7 @@ import Carrito from './components/Carrito'
 import Checkout from './components/Checkout'
 import { AuthContextProvider } from './context/AuthContext'
 import AdminLayout from './layouts/AdminLayout'
+import Footer from './components/Footer'
 
 const App = () => {
 
@@ -58,6 +59,7 @@ const App = () => {
                 </Route>
               </Route>
             </Routes>
+            <Footer />
           </BrowserRouter>
         </CarritoContextProvider>
     </AuthContextProvider>

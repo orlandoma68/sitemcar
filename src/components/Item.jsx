@@ -7,13 +7,13 @@ import { CarritoContext } from '../context/CarritoContext'
 
 const Item = ( { producto } ) => {
 
-  const {agregarProductosCarrito, esta} = useContext(CarritoContext)
+  const {agregarProductosCarrito} = useContext(CarritoContext)
 
   const cantidad = 1
   
   return (
         <div className="card m-3 bg-light p-0" style={ {width: 20 +'rem'} }>
-            <img src={producto.img} alt={producto.nombre} className="img-fluid w-100" style={{height: 200 +'px', objectFit:'cover'}  }/>
+            <img src={producto.imagen} alt={producto.nombre} className="img-fluid w-100" style={{height: 200 +'px', objectFit:'cover'}  }/>
             <div className='text-center py-2'>
                 <h5 className="card-title my-1">{producto.nombre}</h5>
                 <p className="card-text my-1">{producto.categoria}</p>

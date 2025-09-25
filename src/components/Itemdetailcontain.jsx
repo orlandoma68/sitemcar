@@ -1,30 +1,55 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Itemdetail from './Itemdetail'
 import { useParams } from 'react-router-dom'
-import {pedirProductosId} from "../js/pedirProductos"
+import Spinner from './Spinner'
 import { CarritoContext } from '../context/CarritoContext'
 
 const Itemdetailcontain = () => {
 
+    const {carrito, estaProductoCarrito, setEstaProductoCarrito}= useContext(CarritoContext)
+
     const [item, setItem] = useState(null)
-    const {carrito,setEsta, esta}= useContext(CarritoContext)
+
+    const [isLoading, setIsLoading] = useState(true)
+
+    const [error, setError] = useState(null)
+    
     const id = useParams().id
 
     useEffect(()=>{
-        pedirProductosId(Number(id))
-        .then((res)=>{
-            setItem(res)
-        })
-    }, [id])
+
+      const obtenerProductosId = async ()=>{
+        
+        try {
+            const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/${id}`)
+            if(!respuesta.ok) throw new error ("Error al obtener datos ")
+            const data = await respuesta.json()            
+            setItem(data)
+        } catch (error) {      
+            setError("Hubo un error al obtener los datos..")
+            setItem(null)
+        }finally{
+            setIsLoading(false)
+        }  
+      }
+
+      obtenerProductosId()
+        
+  }, [id])
 
     useEffect(()=>{
-      const estaEnCar = carrito.find((prod)=>prod.id === Number(id))
-      if (estaEnCar){
-        setEsta(true)
+      const estaEnCarrito = carrito.find((prod)=>prod.id === (id))
+      if (estaEnCarrito){
+        console.log(estaEnCarrito, "estaencarrito")
+        setEstaProductoCarrito(true)
       }else{
-        setEsta(false)
+        setEstaProductoCarrito(false)
       }
-    },[esta])
+    },[id])
+  
+  if(isLoading) return <Spinner />
+
+  if (error) return <p>{error}</p>
 
   return (
     <div>

@@ -4,19 +4,19 @@ import { Link } from "react-router-dom"
 
 
 const ItemCount = ({handleSacarCarrito, handleEliminarCarrito, handleAgregarCarrito}) => {
+        
+    const {estaProductoCarrito, cantProductosId} = useContext(CarritoContext)
     
-    const {esta,cant} = useContext(CarritoContext)
-
   return (     
             <div className="d-flex flex-column justify-content-center">
-                {esta ?(  
+                {estaProductoCarrito ?(  
                 <div className="d-flex align-items-center">
                     <div className='border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width:9.5+'rem'}}>
-                        {cant === 1 ? 
+                        {cantProductosId === 1 ? 
                             <button onClick={handleEliminarCarrito} className='btn border-0 px-4 btn-outline-primary rounded-start-5'><i className="fa-solid fa-trash"></i></button> :
                             <button onClick={handleSacarCarrito} className='btn border-0 px-4 btn-outline-primary rounded-start-5'>-</button>
                         }
-                        <h6 className="px-3">{ cant }</h6>
+                        <h6 className="px-3">{cantProductosId }</h6>
                         <button onClick={handleAgregarCarrito} className='btn border-0 px-4 btn-outline-primary rounded-end-5'>+</button>
                         
                     </div>
@@ -28,8 +28,7 @@ const ItemCount = ({handleSacarCarrito, handleEliminarCarrito, handleAgregarCarr
                 </div>
                 )
                 }
-            </div>
-        
+            </div>        
   )
 }
 

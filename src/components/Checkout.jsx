@@ -17,6 +17,9 @@ const Checkout = () => {
             cliente : data,
             totalPagar:totalPagar()
         }
+
+        setPedidos(pedidosCliente)
+        console.log(pedidos)
     }
         
   return (

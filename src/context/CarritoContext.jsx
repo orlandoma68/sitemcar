@@ -5,9 +5,9 @@ export const CarritoContext = createContext();
 
 export const CarritoContextProvider = ({children})=>{
 
-    const [cant, setCant] = useState(1)
+    const [cantProductosId, setCantProductosId] = useState(1)
 
-    const [esta, setEsta] = useState(false)
+    const [estaProductoCarrito, setEstaProductoCarrito] = useState(false)
 
     const [carrito, setCarrito] = useState([])
 
@@ -15,7 +15,7 @@ export const CarritoContextProvider = ({children})=>{
         const nuevoCarrito = [...carrito]
         const productoEnCarrito = nuevoCarrito.filter((producto)=>producto.id !== item.id)
         setCarrito(productoEnCarrito)
-        setEsta(false)
+        setEstaProductoCarrito(false)
     }
 
     const sacarProductosCarrito = (item, cantidad)=>{
@@ -29,11 +29,11 @@ export const CarritoContextProvider = ({children})=>{
         if(productoEnCarrito){
               productoEnCarrito.cantidad -=cantidad;
               setCarrito(nuevoCarrito)
-              setCant(productoEnCarrito.cantidad)
+              setCantProductosId(productoEnCarrito.cantidad)
           }else{
               setCarrito([...carrito, itemAgregado])
-              setCant(1)
-              setEsta(true)
+              setCantProductosId(1)
+              setEstaProductoCarrito(true)
           }
     }
 
@@ -48,11 +48,11 @@ export const CarritoContextProvider = ({children})=>{
         if(productoEnCarrito){
               productoEnCarrito.cantidad +=cantidad;
               setCarrito(nuevoCarrito)
-              setCant(productoEnCarrito.cantidad)
+              setCantProductosId(productoEnCarrito.cantidad)
           }else{
               setCarrito([...carrito, itemAgregado])
-              setCant(1)
-              setEsta(true)
+              setCantProductosId(1)
+              setEstaProductoCarrito(true)
           }
     }
 
@@ -70,7 +70,19 @@ export const CarritoContextProvider = ({children})=>{
     }
 
     return(
-    <CarritoContext.Provider value={{carrito, setCarrito, agregarProductosCarrito,cantidadProductosCarrito, totalPagar, vaciarCarrito,esta,cant,setEsta,sacarProductosCarrito,eliminarProductosCarrito}}>
+    <CarritoContext.Provider value={{carrito, 
+            setCarrito, 
+            agregarProductosCarrito,
+            cantidadProductosCarrito, 
+            totalPagar, 
+            vaciarCarrito,
+            estaProductoCarrito,
+            setEstaProductoCarrito,
+            cantProductosId,
+            setCantProductosId,
+            sacarProductosCarrito,
+            eliminarProductosCarrito
+            }}>
         { children }
     </CarritoContext.Provider>    
        

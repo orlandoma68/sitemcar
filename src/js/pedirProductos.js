@@ -1,6 +1,7 @@
 
 import data from "../data/products.json"
 
+
 export const pedirProductos = ()=>{
     return new Promise ((resolve, reject) =>{
         resolve(data)
@@ -31,10 +32,9 @@ export const pedirProductosCategoria = (categoria)=>{
     })
 }
 
-export const pedirProductosNombre = (nombre)=>{
-
+export const pedirProductosNombre = (data, nombre)=>{
     return new Promise ((resolve, reject)=>{
-        const itemNombre = data.filter((prod)=>prod.nombre.toLowerCase().includes(nombre.toLowerCase()));
+        const itemNombre =data.filter((prod)=>prod.nombre.toLowerCase().includes(nombre.toLowerCase()));
         if (itemNombre){
             resolve(itemNombre)
         }else{

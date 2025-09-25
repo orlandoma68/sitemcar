@@ -10,7 +10,9 @@ const Navbar = () => {
   const {register, handleSubmit} = useForm();
 
   const onSubmit = (data)=>{
-    
+    if(!data.termino){
+      return <p>ingrese un nombre del producto</p>
+    } 
     navigate (`/search/${data.termino}`)
   }
 

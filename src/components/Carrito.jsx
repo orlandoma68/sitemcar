@@ -20,8 +20,8 @@ const Carrito = () => {
                               {                                
                                 carrito.map((prod)=> 
                                 <div className="d-flex align-items-center border-bottom py-3" key={prod.id}>                             
-                                    <div className='d-flex img-fluid justify-content-center align-items-center p-1 mx-3' style={ {height: 120 +'px'}  }>
-                                      <img src={prod.img} alt={prod.nombre} className="" style={{width: 130 +'px', objectFit:'cover'}  }/>
+                                    <div className='d-flex img-fluid justify-content-center align-items-center p-1 mx-3' style={{width: 180 +'px', objectFit:'cover', height:"auto"}}>
+                                      <img className="img-fluid w-100" style={{height: 180 +'px', objectFit:'cover'}  } src={prod.imagen} alt={prod.nombre} />
                                     </div>
                                     <div className='d-flex flex-column w-100'>
                                           <div className='d-flex'>
