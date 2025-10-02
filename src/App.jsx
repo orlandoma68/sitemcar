@@ -1,5 +1,4 @@
 
-import Navbar from './components/Navbar'
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import { CarritoContextProvider } from './context/CarritoContext'
 import RootLayout from './Layouts/RootLayout'
@@ -23,6 +22,7 @@ import AdminLayout from './layouts/AdminLayout'
 import Footer from './components/Footer'
 import Modalinicio from './components/Modalinicio'
 import Listproducts from './components/Listproducts'
+import Header from './components/Header'
 
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
       <AuthContextProvider>
         <CarritoContextProvider>      
           <Router>
-            <Navbar/>            
+            <Header/>            
             <Routes>
               {/* root  layout*/}
               <Route element={<RootLayout/>}>

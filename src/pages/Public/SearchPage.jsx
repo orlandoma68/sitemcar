@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Item from '../../components/Item'
-import {pedirProductos, pedirProductosNombre} from "../../js/pedirProductos"
 import Spinner from '../../components/Spinner'
 
 const SearchPage = () => {
