@@ -2,9 +2,10 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CarritoWidget from './CarritoWidget'
 import  {useForm} from "react-hook-form"
+import Modalinicio from './Modalinicio'
 
 const Navbar = () => {
-
+  
   const navigate = useNavigate()
   
   const {register, handleSubmit} = useForm();
@@ -28,15 +29,9 @@ const Navbar = () => {
             <ul className="navbar-nav mr-auto mx-3">
                 <li className="nav-item active"><Link className="nav-link text-white" to="/">Home <span className="sr-only">(current)</span></Link></li>
                 <li className="nav-item"><Link className="nav-link text-white" to="/contact">Contact</Link></li>
-                <li className="nav-item"><Link className="nav-link text-white" to="/about">About</Link></li>
-                <li className='nav-link dropdown '><Link className='navlink dropdown-toggle text-decoration-none text-white' data-bs-toggle="dropdown" to ="#">Categories</Link>
-                  <ul className='dropdown-menu' aria-labelledby="navbarDropdown" >
-                      <li className='dropdown-item'><Link className='navlink text-decoration-none' to ="product/Audio">Audio</Link></li>
-                      <li className='dropdown-item'><Link className='navlink text-decoration-none' to="product/Pets">Pets</Link></li>
-                      <li className='dropdown-item'><Link className='navlink text-decoration-none' to="product/Kitchen">Kitchen</Link></li>
-                  </ul>
-                </li>
+                <li className="nav-item"><Link className="nav-link text-white" to="/about">About</Link></li>       
             </ul>
+            <div className="nav-item"><Modalinicio/></div>                      
             <form className='d-flex my-2 my-lg-0'onSubmit={handleSubmit(onSubmit)} >
                 <input className='form-control mr-sm-2 mx-3' type="ingrese un producto a buscar" placeholder='Buscar producto' {...register('termino')}aria-label="Search"/>
                 <button className='btn btn-outline-primary my-sm-0 mx-3 text-white' type='submit'>Search</button>

@@ -52,9 +52,9 @@ const Carrito = () => {
                   </div> : 
                       <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center'>
                           <h4>El carrito esta vacio :) </h4>
-                          <div className='m-5'>
-                            <Link className='btn btn-outline-primary mx-2' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
-                            <Link className='btn btn-outline-primary mx-2' to="../../auth/register"><span >Registrate</span></Link>
+                          <div className='m-5 d-flex align-items-center justify-content-center w-100'>
+                            <Link className='btn btn-outline-primary mx-2 my-2 ' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
+                            <Link className='btn btn-outline-primary mx-2 my-2 ' to="../../auth/register"><span >Registrate</span></Link>
                           </div>
                       </div>                 
                 } 
@@ -65,7 +65,7 @@ const Carrito = () => {
                 
                   <div className='col-md-2 bg-white  d-flex align-items-center flex-column'>
                       <h5 className='my-2'>Total: ({cantidadProductosCarrito()} Productos) : US$ { totalPagar() }</h5>
-                      <Link className='btn btn-outline-primary' to="/checkout"><span >Proceder a Pagar</span></Link>
+                      <Link className='btn btn-outline-primary my-3' to="/checkout"><span >Proceder a Pagar</span></Link>
                   </div>
                 }
             </div>

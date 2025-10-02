@@ -1,6 +1,6 @@
 
 import Navbar from './components/Navbar'
-import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import { CarritoContextProvider } from './context/CarritoContext'
 import RootLayout from './Layouts/RootLayout'
 import PublicLayout from './Layouts/PublicLayout'
@@ -21,28 +21,38 @@ import Checkout from './components/Checkout'
 import { AuthContextProvider } from './context/AuthContext'
 import AdminLayout from './layouts/AdminLayout'
 import Footer from './components/Footer'
+import Modalinicio from './components/Modalinicio'
+import Listproducts from './components/Listproducts'
+
 
 const App = () => {
-
+  
   return ( 
     
       <AuthContextProvider>
         <CarritoContextProvider>      
-          <BrowserRouter>
-            <Navbar/>
+          <Router>
+            <Navbar/>            
             <Routes>
+              {/* root  layout*/}
               <Route element={<RootLayout/>}>
-
                 {/* ruta publica*/}
                 <Route element={<PublicLayout/>}>
                     <Route index element={<HomePage />}/>
                     <Route path='contact' element={<ContactPage />}/>
                     <Route path='about' element={<AboutPage />}/>
                     <Route path='search/:termino' element={<SearchPage />}/>
+                    <Route path='category/:categoria' element={<Listproducts />}/>
                     <Route path='*' element={<NotFoundPage />}/>
                     <Route path='item/:id' element ={<Itemdetailcontain/>}/>
                     <Route path='carrito' element ={<Carrito/>}/>
                     <Route path="checkout" element={<Checkout />} />
+                </Route>                
+                {/* ruta autenticacion*/}
+                <Route path='auth' element={<AuthLayout/>}>
+                    <Route path='login' element={<LoginPage />}/>
+                    <Route path='register' element={<RegisterPage />}/>
+                    <Route path='lostpass' element={<LostpassPage />}/>
                 </Route>
 
                 {/* ruta Administracion*/}
@@ -50,17 +60,11 @@ const App = () => {
                     <Route index element={<DasboardPage />}/>
                     <Route path='profile' element={<ProfilePage />}/>
                 </Route>
-                
-                {/* ruta autenticacion*/}
-                <Route path='auth' element={<AuthLayout/>}>
-                    <Route path='login' element={<LoginPage />}/>
-                    <Route path='register' element={<RegisterPage />}/>
-                    <Route path='lostpass' element={<LostpassPage />}/>
-                </Route>
               </Route>
+              {/* fin de root layout*/}
             </Routes>
             <Footer />
-          </BrowserRouter>
+          </Router>
         </CarritoContextProvider>
     </AuthContextProvider>
   )

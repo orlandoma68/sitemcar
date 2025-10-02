@@ -11,8 +11,8 @@ const DasboardPage = () => {
   }
 
   return (
-    <div>
-      <h1>Bienvenido :{user && user.displayName || user.email}</h1>
+    <div className ="my-3">
+      <h1 className='fs-4'>Bienvenido :{user && user.displayName || user.email}</h1>
       <button className='btn btn-outline-primary' onClick={handleLogout}>Logout</button>
     </div>
   )

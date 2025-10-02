@@ -20,12 +20,27 @@ export const pedirProductosId = (id)=>{
     })
 }
 
-export const pedirProductosCategoria = (categoria)=>{
+export const pedirProductosCategoria = (datos, categoria)=>{
 
     return new Promise ((resolve, reject)=>{
-        const itemCategoria = data.filter((itemCategoria) => itemCategoria.categoria === categoria);
+        const itemCategoria = datos.filter((itemCategoria) => itemCategoria.categoria === categoria);
         if (itemCategoria){
             resolve(itemCategoria)
+        }else{
+            reject("error al traer la data")
+        }
+    })
+}
+
+export const pedirProductosCategoriaUnicos = (datos)=>{
+
+    return new Promise ((resolve, reject)=>{
+
+        const categoriasUnicos = datos.filter((producto, index, self) =>
+        index === self.findIndex(p => p.categoria === producto.categoria));
+        
+        if (categoriasUnicos){
+            resolve(categoriasUnicos)
         }else{
             reject("error al traer la data")
         }
