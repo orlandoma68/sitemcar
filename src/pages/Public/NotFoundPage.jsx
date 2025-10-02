@@ -7,7 +7,7 @@ const NotFoundPage = () => {
         <div className='col text-center'>
             <h1 className="titulo">  {'{ 4 0 4 }'}       </h1>
             <p>.......Pagina no encontrada......</p>
-            <Link className="btn btn-secondary" to="/"> volver</Link>
+            <Link className="btn btn-secondary px-4 my-3" to="/"> Volver</Link>
         </div>
     </section>
   )

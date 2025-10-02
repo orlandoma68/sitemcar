@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Item from '../../components/Item'
 import Spinner from '../../components/Spinner'
 
@@ -33,19 +33,7 @@ const SearchPage = () => {
     buscarPorNombre()
 
   }, [termino])
-
-  /*
-  useEffect(()=>{
-    fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos?nombre=${encodeURIComponent(termino)}`)
-    .then((res)=>res.json())
-    .then((datos)=>{
-        setProductos(datos)
-        console.log(datos, "...da")
-    })
-    .catch(error => setError(error.message))                
-
-  }, [termino])
-  */
+  
   return (
     <div className='my-5 row gy-5 row-cols-1 row-cols-sm-2 row-cols-md-3 d-flex justify-content-center align-items-center'>
         {isLoading && <Spinner/> }

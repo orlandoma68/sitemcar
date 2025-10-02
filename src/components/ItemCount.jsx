@@ -1,15 +1,13 @@
-import { useContext, useEffect, useState } from "react"
-import { CarritoContext } from "../context/CarritoContext"
+
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
-
 const ItemCount = ({handleSacarCarrito, handleEliminarCarrito, handleAgregarCarrito}) => {
-        
-    const {estaProductoCarrito, cantProductosId} = useContext(CarritoContext)
+
+    const [cantProductosId, setCantProductosId]=useState(1)
     
   return (     
             <div className="d-flex flex-column justify-content-center">
-                {estaProductoCarrito ?(  
                 <div className="d-flex align-items-center">
                     <div className='border border-1 border-primary d-flex align-items-center justify-content-center rounded-5 px-1' style={ {width:9.5+'rem'}}>
                         {cantProductosId === 1 ? 
@@ -21,13 +19,8 @@ const ItemCount = ({handleSacarCarrito, handleEliminarCarrito, handleAgregarCarr
                         
                     </div>
                     <Link className=' mx-2 text-decoration-none border border-1 border-primary rounded-5 px-3 btn btn-outline-primary ' to="/carrito">Ir al carrito...</Link>
-                </div>):
-                (
-                <div className="border-0 d-flex my-3">
-                    <button onClick={handleAgregarCarrito} className='btn btn-outline-primary px-4'>Agregar al Carrito</button>
                 </div>
-                )
-                }
+                
             </div>        
   )
 }

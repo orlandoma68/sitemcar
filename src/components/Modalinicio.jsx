@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Modalcontenido from './Modalcontenido'
 import { Link } from 'react-router-dom'
-import Spinner from './Spinner'
 import { pedirProductosCategoriaUnicos } from '../js/pedirProductos'
 
 const Modalinicio = () => {

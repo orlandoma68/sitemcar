@@ -6,7 +6,9 @@
     margin-top: 28px;
     width: 100%;
     background-color:#000000bf;
-    min-height: 12vh;
+    max-height: 400px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 .modal-contenido.isopen{

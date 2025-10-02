@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import ItemCount from './ItemCount'
-
-import {CarritoContext } from '../context/CarritoContext'
 
 const Itemdetail = ({item}) => {
 
-    const {agregarProductosCarrito, sacarProductosCarrito, eliminarProductosCarrito} = useContext(CarritoContext)
-
     const [cantidad, setCantidad] = useState(1)
-    
+
   return (
     <>
         {

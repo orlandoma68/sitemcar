@@ -1,11 +1,9 @@
-import React, { useContext } from 'react'
-import { CarritoContext } from '../context/CarritoContext'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Carrito = () => {
   
-  const {carrito,eliminarProductosCarrito, totalPagar, vaciarCarrito, sacarProductosCarrito,agregarProductosCarrito, cantidadProductosCarrito} = useContext(CarritoContext)
-  
+  const [carrito, setCarrito] = useState(0)
   const cantidades = 1
 
   return (
