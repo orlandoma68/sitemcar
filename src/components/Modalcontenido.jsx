@@ -1,5 +1,5 @@
 import React from 'react'
-import "../css/Modalcontenido.css"
+import "../css/modalContenido.css"
 
 const Modalcontenido = ({children, handleOpenModal, handleCloseModal}) => {
   
