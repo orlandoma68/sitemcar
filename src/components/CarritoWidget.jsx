@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const CarritoWidget = () => {
-
+const CarritoWidget = ({cantidad}) => {
+  
   return (
     <div>
       <Link className='text-decoration-none d-flex align-items-center' to="/carrito">
         <span className='text-white' > 
-          <i className="fa-solid fa-cart-shopping"></i><sup className='rounded-5 mx-1'>{0}</sup>
+          <i className="fa-solid fa-cart-shopping"></i><sup className='rounded-5 mx-1'>{ cantidad }</sup>
            Carrito    
         </span>        
       </Link>

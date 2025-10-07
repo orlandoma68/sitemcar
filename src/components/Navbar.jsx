@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CarritoWidget from './CarritoWidget'
 import Modalinicio from './Modalinicio'
 
-const Navbar = () => {
-  
+const Navbar = ({cantidad}) => {
+  const navigate = useNavigate()  
+  navigate (`/`)
   return (
     <nav className="navbar navbar-expand-lg text-light" style={{backgroundColor: '#8ec3eb'}}>
         <Link className="navbar-brand mx-5 fs-3 text-white" to="/">SISCAR</Link>
@@ -25,7 +26,7 @@ const Navbar = () => {
                 <button className='btn btn-outline-primary my-sm-0 mx-3 text-white' type='submit'>Search</button>
            </form>
             <div className="nav-item"><Link className="nav-link text-white m-4" to="/auth/login">Login</Link></div>
-            <div className='m-3 btn btn-outline-primary'><CarritoWidget/></div>
+            <div className='m-3 btn btn-outline-primary'><CarritoWidget cantidad = {cantidad}/></div>
         </div>        
     </nav>    
   )

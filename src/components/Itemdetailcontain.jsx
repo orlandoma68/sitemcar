@@ -3,7 +3,7 @@ import Itemdetail from './Itemdetail'
 import { useParams } from 'react-router-dom'
 import Spinner from './Spinner'
 
-const Itemdetailcontain = () => {
+const Itemdetailcontain = ( { agregarProductosCarrito, estaProductoCarrito, cantProductosId, eliminarProductosCarrito, sacarProductosCarrito } ) => {
 
     const [item, setItem] = useState(null)
 
@@ -40,7 +40,7 @@ const Itemdetailcontain = () => {
 
   return (
     <div>
-      <Itemdetail item = {item} />
+      <Itemdetail item = {item} agregarProductosCarrito = {agregarProductosCarrito} estaProductoCarrito = {estaProductoCarrito} cantProductosId = {cantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito={sacarProductosCarrito} />
     </div>
   )
 }

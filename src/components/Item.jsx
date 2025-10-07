@@ -1,9 +1,9 @@
 
-import React from 'react'
+import React, {useState } from 'react'
 
 import { Link } from 'react-router-dom'
 
-const Item = ( { producto } ) => {
+const Item = ( { producto, agregarProductosCarrito} ) => {
   
   return (
         <div className="card m-3 bg-light p-0" style={ {width: 22 +'rem'} }>
@@ -14,7 +14,7 @@ const Item = ( { producto } ) => {
                 <p className="card-text px-4 my-1">{producto.descripcion}</p>
                 <p className="card-text my-1"><sup>US$ </sup><span className='fs-2'>{producto.precio}</span></p>
                 <Link className="btn btn-outline-primary m-1" to ={`/item/${producto.id}`} >Ver mas...</Link>
-                <button onClick={()=>agregarProductosCarrito(producto)} className="btn btn-outline-primary m-1">Agregar Carrito</button>
+                <button onClick={()=>agregarProductosCarrito( producto )} className="btn btn-outline-primary m-1">Agregar Carrito</button>
             </div>
         </div>
   )

@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from './Navbar'
 
-const Header = () => {
+const Header = ({cantidad}) => {
   return (
     <div>
-      <Navbar />
+      <Navbar cantidad = {cantidad} />
     </div>
   )
 }

@@ -1,9 +1,7 @@
 import React, {useState } from 'react'
 import ItemCount from './ItemCount'
 
-const Itemdetail = ({item}) => {
-
-    const [cantidad, setCantidad] = useState(1)
+const Itemdetail = ({item, agregarProductosCarrito, estaProductoCarrito, cantProductosId, eliminarProductosCarrito, sacarProductosCarrito}) => {
 
   return (
     <>
@@ -25,9 +23,11 @@ const Itemdetail = ({item}) => {
                                 <span className='text-dark fs-2' >{item.precio}</span>
                             </p>
                             <ItemCount                                   
-                                handleSacarCarrito={()=>{sacarProductosCarrito(item,cantidad)}} 
+                                handleSacarCarrito={()=>{sacarProductosCarrito(item)}} 
                                 handleEliminarCarrito={()=>{eliminarProductosCarrito(item)}} 
-                                handleAgregarCarrito = {()=>{agregarProductosCarrito(item,cantidad)}} 
+                                handleAgregarCarrito = {()=>{agregarProductosCarrito(item)}} 
+                                estaProductoCarrito = {estaProductoCarrito}
+                                cantProductosId = {cantProductosId}
                             />
                         </div>    
                 </div>

@@ -4,7 +4,7 @@ import {pedirProductosCategoria} from "../js/pedirProductos"
 import { useParams } from 'react-router-dom'
 import Spinner from './Spinner'
 
-const Listproducts = () => {
+const Listproducts = ({agregarProductosCarrito}) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -59,7 +59,7 @@ const Listproducts = () => {
                     <div className='d-flex align-items-center justify-content-center'>
                       <h1 className='fs-4 bg-dark w-100 text-white py-2 text-center'>{tituloProducto}</h1>
                     </div>
-                    <Itemproduct productos = {productos}/> 
+                    <Itemproduct productos = {productos} agregarProductosCarrito ={agregarProductosCarrito}/> 
                 </div>
             }
         </div>
