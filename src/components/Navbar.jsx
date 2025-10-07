@@ -4,8 +4,7 @@ import CarritoWidget from './CarritoWidget'
 import Modalinicio from './Modalinicio'
 
 const Navbar = ({cantidad}) => {
-  const navigate = useNavigate()  
-  navigate (`/`)
+ 
   return (
     <nav className="navbar navbar-expand-lg text-light" style={{backgroundColor: '#8ec3eb'}}>
         <Link className="navbar-brand mx-5 fs-3 text-white" to="/">SISCAR</Link>
