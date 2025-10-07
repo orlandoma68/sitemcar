@@ -2,8 +2,7 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 
 import RootLayout from './layouts/RootLayout'
-
-import PublicLayout from './Layouts/PublicLayout'
+import PublicLayout from './layouts/PublicLayout'
 
 import HomePage from './pages/Public/HomePage'
 import ContactPage from './pages/Public/ContactPage'
@@ -17,6 +16,7 @@ import Listproducts from './components/Listproducts'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
 import { useState } from 'react'
+
 
 const App = () => {
 
