@@ -16,6 +16,7 @@ import Listproducts from './components/Listproducts'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
 import { useState } from 'react'
+import SearchPage from './pages/Public/SearchPage'
 
 
 const App = () => {
@@ -39,7 +40,6 @@ const App = () => {
       setCarrito([...carrito, {...prod, cantidad: 1 }]);
       setCantProductosId(1)
       setEstaProductoCarrito(true)
-
     }  
 
   }
@@ -95,8 +95,9 @@ const sacarProductosCarrito = (prod)=>{
                     <Route path='contact' element={<ContactPage />}/>
                     <Route path='about' element={<AboutPage />}/>
                     <Route path='category/:categoria' element={<Listproducts agregarProductosCarrito = {agregarProductosCarrito} />}/>
+                    <Route path='search/:termino' element={<SearchPage agregarProductosCarrito = {agregarProductosCarrito} />}/>
                     <Route path='*' element={<NotFoundPage />}/>
-                    <Route path='item/:id' element ={<Itemdetailcontain agregarProductosCarrito = {agregarProductosCarrito} estaProductoCarrito = {estaProductoCarrito} cantProductosId = {cantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito}/>}/>
+                    <Route path='item/:id' element ={<Itemdetailcontain agregarProductosCarrito = {agregarProductosCarrito} carrito = {carrito} estaProductoCarrito = {estaProductoCarrito} setEstaProductoCarrito = {setEstaProductoCarrito} cantProductosId = {cantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito}/>}/>
                     <Route path='carrito' element ={<Carrito carrito = {carrito} vaciarCarrito = {vaciarCarrito} cantidadProductosCarrito = {cantidadProductosCarrito} totalPagar = {totalPagar} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito} agregarProductosCarrito ={ agregarProductosCarrito }/>}/>
                 </Route>
                 {/*fin de ruta publica*/}
