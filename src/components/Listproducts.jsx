@@ -52,17 +52,13 @@ const Listproducts = ({agregarProductosCarrito}) => {
     if(error) return <p>{error}</p>
 
   return (
-    <div className='my-0'>    
-        <div>
-            {productos && 
-                <div>
-                    <div className='d-flex align-items-center justify-content-center'>
-                      <h1 className='fs-4 bg-dark w-100 text-white py-2 text-center'>{tituloProducto}</h1>
-                    </div>
-                    <Itemproduct productos = {productos} agregarProductosCarrito ={agregarProductosCarrito}/> 
-                </div>
-            }
-        </div>
+    <div>    
+        {productos && 
+          <div>
+              <h1 className='fs-4 bg-dark w-100 text-white py-2 text-center'>{tituloProducto}</h1>
+              <Itemproduct productos = {productos} agregarProductosCarrito ={agregarProductosCarrito}/> 
+          </div>
+        }
     </div>    
   )
 }

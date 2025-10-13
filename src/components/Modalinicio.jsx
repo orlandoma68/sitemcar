@@ -38,10 +38,10 @@ const Modalinicio = () => {
     <div className='modal-inicio'>
       <Link className="nav-link text-white" onMouseEnter={handleOpenModal} to="#"><i className="fa-solid fa-bars mx-1"></i>Categoria</Link> 
       <Modalcontenido handleOpenModal ={openModal} handleCloseModal = {handleCloseModal}>
-        <div onMouseLeave={handleCloseModal}>        
-            <ul className="navbar-nav mr-auto mx-3 p-3 d-flex">
+        <div className='bg-light' onMouseLeave={handleCloseModal}>        
+            <ul className="mr-auto mx-3 p-3 d-flex">
                 {productos && productos.map(prod => {
-                   return <li key={prod.id} onClick={handleCloseModal} className='mx-1 nav-link'><Link className='text-dark link-primary link-offset-3 link-underline-opacity-0 link-underline-opacity-100-hover' to= {`/category/${prod.categoria}`} > {prod.categoria}</Link></li>})                
+                   return <li key={prod.id} onClick={handleCloseModal} className='mx-2 nav-link'><Link className='text-dark link-primary link-offset-3 link-underline-opacity-0 link-underline-opacity-100-hover' to= {`/category/${prod.categoria}`} > {prod.categoria}</Link></li>})                
                 }
             </ul>
         </div>

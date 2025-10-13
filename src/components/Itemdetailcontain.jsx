@@ -3,7 +3,7 @@ import Itemdetail from './Itemdetail'
 import { useFetcher, useParams } from 'react-router-dom'
 import Spinner from './Spinner'
 
-const Itemdetailcontain = ( {carrito, agregarProductosCarrito,setEstaProductoCarrito, estaProductoCarrito, cantProductosId, eliminarProductosCarrito, sacarProductosCarrito } ) => {
+const Itemdetailcontain = ( {carrito, agregarProductosCarrito,setEstaProductoCarrito, estaProductoCarrito, cantProductosId,setCantProductosId, eliminarProductosCarrito, sacarProductosCarrito } ) => {
 
     const [item, setItem] = useState(null)
 
@@ -33,10 +33,13 @@ const Itemdetailcontain = ( {carrito, agregarProductosCarrito,setEstaProductoCar
   }, [id])
 
   useEffect(()=>{
-    if(carrito.find((car) => car.id === id)) {
+    const idFound = carrito.find((car) => car.id === id )
+    if(idFound) {
       setEstaProductoCarrito(true)
+      setCantProductosId(idFound.cantidad)
     }else{
       setEstaProductoCarrito(false)
+      setCantProductosId(1)
     };
   },[id])
   

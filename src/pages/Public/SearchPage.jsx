@@ -7,9 +7,9 @@ const SearchPage = ({agregarProductosCarrito}) => {
 
   const [productos, setProductos] = useState([])
 
-  const [error, setError] = useState()
-
   const [isLoading, setIsLoading] = useState(true)
+
+  const [error, setError] = useState()
 
   const termino = useParams().termino
 
@@ -29,14 +29,15 @@ const SearchPage = ({agregarProductosCarrito}) => {
         setIsLoading(false)
       }
     }
-
     buscarPorNombre()
-
   }, [termino])
   
+  if(isLoading) return <Spinner/>        
+
+  //if(error) return <p>{error}</p>
+
   return (
     <div className='my-5 row gy-5 row-cols-1 row-cols-sm-2 row-cols-md-3 d-flex justify-content-center align-items-center'>
-        {isLoading && <Spinner/> }
         { productos.length >0 ?
             productos.map((producto) =>{
                 return(

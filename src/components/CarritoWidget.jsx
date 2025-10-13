@@ -8,7 +8,7 @@ const CarritoWidget = ({cantidad}) => {
     <div>
       <Link className='text-decoration-none d-flex align-items-center' to="/carrito">
         <span className='text-white' > 
-          <i className="fa-solid fa-cart-shopping"></i><sup className='rounded-5 mx-1'>{ cantidad }</sup>
+          <i className="fa-solid fa-cart-shopping"></i><strong className='w-100 mx-1'><sup className='rounded-circle bg-danger text-white p-1'>{ cantidad }</sup></strong>
            Carrito    
         </span>        
       </Link>

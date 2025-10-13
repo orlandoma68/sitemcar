@@ -18,14 +18,14 @@ const Carrito = ( {carrito, vaciarCarrito, cantidadProductosCarrito, totalPagar,
                                     <div className='d-flex img-fluid justify-content-center align-items-center p-1 mx-3' style={{width: 180 +'px', objectFit:'cover', height:"auto"}}>
                                       <img className="img-fluid w-100" style={{height: 180 +'px', objectFit:'cover'}  } src={prod.imagen} alt={prod.nombre} />
                                     </div>
-                                    <div className='d-flex flex-column w-100'>
+                                    <div className='d-flex flex-column w-100 text-lg-start'>
                                           <div className='d-flex'>
                                             <div className='d-flex flex-column w-100'>
-                                              <h1 className='mx-2 my-1 fs-6'>{prod.nombre}</h1> 
-                                              <p className='mx-2 my-0 fs-6 w-100'>{prod.descripcion}</p> 
+                                              <h1 className='mx-2 my-1 fs-6 text-lg-start'>{prod.nombre}</h1> 
+                                              <p className='mx-2 my-0 fs-6 text-lg-start w-100'>{prod.descripcion}</p> 
                                             </div>
                                             <div className='d-flex justify-content-end w-100'>
-                                              <p className='mx-2 my-1'><sup>US$ </sup><span className='fs-5'>{prod.precio}</span></p> 
+                                              <p className='mx-2 my-1'><sup>US$ </sup><span className='fs-6 text-lg-start'>{prod.precio}</span></p> 
                                             </div>                                
                                           </div>
                                           <p className='mx-2 my-1'>Subtotal:{(prod.precio * prod.cantidad).toFixed(2)}</p> 

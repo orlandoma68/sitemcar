@@ -97,7 +97,7 @@ const sacarProductosCarrito = (prod)=>{
                     <Route path='category/:categoria' element={<Listproducts agregarProductosCarrito = {agregarProductosCarrito} />}/>
                     <Route path='search/:termino' element={<SearchPage agregarProductosCarrito = {agregarProductosCarrito} />}/>
                     <Route path='*' element={<NotFoundPage />}/>
-                    <Route path='item/:id' element ={<Itemdetailcontain agregarProductosCarrito = {agregarProductosCarrito} carrito = {carrito} estaProductoCarrito = {estaProductoCarrito} setEstaProductoCarrito = {setEstaProductoCarrito} cantProductosId = {cantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito}/>}/>
+                    <Route path='item/:id' element ={<Itemdetailcontain agregarProductosCarrito = {agregarProductosCarrito} carrito = {carrito} estaProductoCarrito = {estaProductoCarrito} setEstaProductoCarrito = {setEstaProductoCarrito} cantProductosId = {cantProductosId} setCantProductosId = {setCantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito}/>}/>
                     <Route path='carrito' element ={<Carrito carrito = {carrito} vaciarCarrito = {vaciarCarrito} cantidadProductosCarrito = {cantidadProductosCarrito} totalPagar = {totalPagar} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito} agregarProductosCarrito ={ agregarProductosCarrito }/>}/>
                 </Route>
                 {/*fin de ruta publica*/}
