@@ -10,7 +10,7 @@ const Navbar = ({cantidad}) => {
   const navigate = useNavigate()
   
   const [searchTermino, setSearchTermino] = useState()  
-  
+
   const activarMenu = () => {
     setIsOpenMenu(!isOpenMenu)
   }
@@ -37,16 +37,16 @@ const Navbar = ({cantidad}) => {
                 <Link className='navitem logo' to="/">SISCAR</Link>
               </div>
               <ul className={isOpenMenu ? 'navlink activate' : 'navlink'}>
-                  <li onClick={isOpenMenu}><Link className='navitem text-white' to="/">Home <span className="sr-only">(current)</span></Link></li>
-                  <li onClick={isOpenMenu}><Link className='navitem text-white' to="/contact">Contact</Link></li>
-                  <li onClick={isOpenMenu}><Link className='navitem text-white' to="/about">About</Link></li>       
-                  <li onClick={isOpenMenu}><Modalinicio/></li>
+                  <li onClick={()=>setIsOpenMenu(false)}><Link className='navitem text-white' to="/">Home <span className="sr-only">(current)</span></Link></li>
+                  <li onClick={()=>setIsOpenMenu(false)}><Link className='navitem text-white' to="/contact">Contact</Link></li>
+                  <li onClick={()=>setIsOpenMenu(false)}><Link className='navitem text-white' to="/about">About</Link></li>       
+                  <li ><Modalinicio/></li>
                   <form onSubmit={handleSearchSubmit} className='d-flex m-3'  >
                     <input  className='form-control mr-sm-2' type="ingrese un producto a buscar" placeholder='Buscar producto' aria-label="Search" value={searchTermino} onChange={handleSearchChange}/>
                     <button className='btn btn-outline-primary mx-1' type='submit'>Search</button>
                   </form>
                   <div >
-                    <Link onClick={isOpenMenu} className='navitem text-white mx-3' to="/auth/login">Login</Link>
+                    <Link onClick={()=>setIsOpenMenu(false)} className='navitem text-white mx-3' to="/auth/login">Login</Link>
                   </div>
               </ul>
               <div >
