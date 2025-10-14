@@ -46,9 +46,9 @@ const Carrito = ( {carrito, vaciarCarrito, cantidadProductosCarrito, totalPagar,
                       </div> 
                       <button className='btn btn-outline-primary m-3' onClick={vaciarCarrito}>Vaciar Carrito</button>
                   </div> : 
-                      <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center'>
+                      <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center w-100'>
                           <h4>El carrito esta vacio :) </h4>
-                          <img className="img-fluid w-100 mt-3" style={{height: 150 +'px', objectFit:'cover'}  } src={carimg} alt={'carrito'} />
+                          <img className="img-fluid mt-3" style={{height: 150 +'px', objectFit:'cover'}  } src={carimg} alt={'carrito'} />
                           <div className='m-3 d-flex align-items-center justify-content-center' style={{width: 350 +'px'}} >
                             <Link className='btn btn-outline-primary mx-2 my-2' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
                             <Link className='btn btn-outline-primary mx-2 my-2' to="../../auth/register"><span >Registrate</span></Link>
