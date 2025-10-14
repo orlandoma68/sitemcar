@@ -1,3 +1,4 @@
+import carimg from "../imagen/carrito.png"
 
 import { Link } from 'react-router-dom'
 
@@ -47,9 +48,10 @@ const Carrito = ( {carrito, vaciarCarrito, cantidadProductosCarrito, totalPagar,
                   </div> : 
                       <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center'>
                           <h4>El carrito esta vacio :) </h4>
-                          <div className='m-5 d-flex align-items-center justify-content-center w-100'>
-                            <Link className='btn btn-outline-primary mx-2 my-2 ' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
-                            <Link className='btn btn-outline-primary mx-2 my-2 ' to="../../auth/register"><span >Registrate</span></Link>
+                          <img className="img-fluid w-100 mt-3" style={{height: 150 +'px', objectFit:'cover'}  } src={carimg} alt={'carrito'} />
+                          <div className='m-3 d-flex align-items-center justify-content-center' style={{width: 350 +'px'}} >
+                            <Link className='btn btn-outline-primary mx-2 my-2' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
+                            <Link className='btn btn-outline-primary mx-2 my-2' to="../../auth/register"><span >Registrate</span></Link>
                           </div>
                       </div>                 
                 } 

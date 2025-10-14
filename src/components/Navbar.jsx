@@ -41,7 +41,7 @@ const Navbar = ({cantidad}) => {
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='navitem text-white' to="/contact">Contact</Link></li>
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='navitem text-white' to="/about">About</Link></li>       
                   <li ><Modalinicio/></li>
-                  <form onSubmit={handleSearchSubmit} className='d-flex m-3'  >
+                  <form onSubmit={handleSearchSubmit} className='d-flex m-4'  >
                     <input  className='form-control mr-sm-2' type="ingrese un producto a buscar" placeholder='Buscar producto' aria-label="Search" value={searchTermino} onChange={handleSearchChange}/>
                     <button className='btn btn-outline-primary mx-1' type='submit'>Search</button>
                   </form>
