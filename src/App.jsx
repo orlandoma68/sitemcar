@@ -1,4 +1,3 @@
-
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
 import {Toaster} from "react-hot-toast"
 
@@ -44,7 +43,7 @@ const App = () => {
 
                 {/* inicio de ruta publica*/}
                 <Route element={<PublicLayout/>}>
-                    <Route index element={<HomePage/>}/>
+                    <Route index element={<HomePage />}/>
                     <Route path='contact' element={<ContactPage />}/>
                     <Route path='about' element={<AboutPage />}/>
                     <Route path='category/:categoria' element={<Listproducts />}/>
