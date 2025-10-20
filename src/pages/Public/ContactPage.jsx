@@ -1,13 +1,14 @@
 import React from 'react'
-import {useForm} from "react-hook-form"
+import { useForm } from "react-hook-form"
 
 const ContactPage = () => {
-
-  const {register, handleSubmit}=useForm()
+    const {register, handleSubmit}=useForm()
   
-  const enviar = (data)=>{
-    console.log("enviando....", data)
-  }
+    const enviar = (data)=>{
+
+        console.log("enviando....", data)
+
+    }
 
   return (
     <div className='container my-5'>
@@ -25,6 +26,7 @@ const ContactPage = () => {
         </div>
       </div>
     </div>
+
   )
 }
 

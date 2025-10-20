@@ -1,8 +1,6 @@
-import React from 'react'
-import { useContext } from 'react'
-import { useState } from 'react'
-import{useForm} from 'react-hook-form'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { useForm } from 'react-hook-form'
 
 const LostPassPage = () => {
 
@@ -11,17 +9,18 @@ const LostPassPage = () => {
     const { resetPassword } = useContext(AuthContext)
     
     const {register, handleSubmit}=useForm()
-
+  
     const enviar = async (data)=>{
       
       if(!data.email) return setError("Ingrese un email por favor..")
-
+  
       try {
         await resetPassword(data.email)
         setError("Hemos enviado un correo a su direccion proporcionado..")
       } catch (error) {
         setError(error.message)
       }
+  
     }
 
   return (
