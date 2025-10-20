@@ -1,5 +1,7 @@
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+
 import {Toaster} from "react-hot-toast"
+
 import { AuthContextProvider } from './context/AuthContext'
 import { CarritoContextProvider } from './context/CarritoContext'
 
@@ -7,7 +9,6 @@ import Header from './components/Header'
 import RootLayout from './layouts/RootLayout'
 import PublicLayout from './layouts/PublicLayout'
 import HomePage from './pages/public/HomePage'
-
 import Listproducts from './components/Listproducts'
 import Checkout from './components/Checkout'
 import DasboardPage from './pages/admin/DasboardPage'
