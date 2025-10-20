@@ -1,9 +1,14 @@
+
+import { useContext } from "react"
 import carimg from "../imagen/carrito.png"
 
 import { Link } from 'react-router-dom'
+import { CarritoContext } from "../context/CarritoContext"
 
-const Carrito = ( {carrito, vaciarCarrito, cantidadProductosCarrito, totalPagar, eliminarProductosCarrito, sacarProductosCarrito, agregarProductosCarrito} ) => {
-  
+const Carrito = ( ) => {
+
+  const {carrito, vaciarCarrito, cantidadProductosCarrito, totalPagar, eliminarProductosCarrito, sacarProductosCarrito, agregarProductosCarrito} = useContext(CarritoContext)
+
   return (
         <div className='p-4' style={{backgroundColor:"#e3f2fd"}}>
             <div className='row justify-content-center'>

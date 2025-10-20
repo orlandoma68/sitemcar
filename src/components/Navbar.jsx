@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CarritoWidget from './CarritoWidget'
 import Modalinicio from './Modalinicio'
+import { CarritoContext } from '../context/CarritoContext'
 
-const Navbar = ({cantidad}) => {
-  
+const Navbar = () => {
+
+  const {cantidadProductosCarrito} = useContext(CarritoContext)
+
   const [isOpenMenu, setIsOpenMenu] = useState(false)
 
   const navigate = useNavigate()
@@ -31,7 +34,7 @@ const Navbar = ({cantidad}) => {
   return (
       <header>
         <div className='contenedor'>
-          <nav>
+          <nav className='w-100'>
               <div>
                 <Link className='logo' to="/">SISCAR</Link>
               </div>
@@ -40,7 +43,7 @@ const Navbar = ({cantidad}) => {
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/">Home <span className="sr-only">(current)</span></Link></li>
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/contact">Contact</Link></li>
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/about">About</Link></li>       
-                  <li ><Modalinicio/></li>
+                  <li><Modalinicio /></li>
                   <li>
                   <form onSubmit={handleSearchSubmit} className='d-flex'  >
                     <input  className='form-control mr-sm-2' type="ingrese un producto a buscar" placeholder='Buscar producto' aria-label="Search" value={searchTermino} onChange={handleSearchChange}/>
@@ -55,7 +58,7 @@ const Navbar = ({cantidad}) => {
               </ul>
               </div>
               <div >
-                  <CarritoWidget cantidad = {cantidad}/>
+                  <CarritoWidget cantidadProductosCarrito = {cantidadProductosCarrito}/>
               </div>          
               <div className='icon' onClick={activarMenu}>
                 <i className="fa-solid fa-bars mx-1"></i>

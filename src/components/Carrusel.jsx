@@ -7,10 +7,10 @@ const Carrusel = () => {
   return (
         <div id="carouselExampleControls" className="carousel slide my-1 py-3 d-flex align-items-center justify-content-center bg-dark" data-bs-ride="carousel">
             <div className="carousel-inner bg-dark w-50" >
-                <div className="carousel-item active"  data-bs-interval="5000">
+                <div className="carousel-item active"  data-bs-interval="3000">
                     <Link to="auth/register"> <img src={banner1} alt="img-banner" className="img-fluid" style={{objectFit:'cover'}  }/></Link>
                 </div>
-                <div className="carousel-item active"  data-bs-interval="5000">
+                <div className="carousel-item active"  data-bs-interval="3000">
                     <Link to="auth/register"> <img src={banner2} alt="img-banner" className="img-fluid" style={{objectFit:'cover'}  }/></Link>
                 </div>
             </div>

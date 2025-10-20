@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Item from '../../components/Item'
 import Spinner from '../../components/Spinner'
 
-const SearchPage = ({agregarProductosCarrito}) => {
+const SearchPage = () => {
 
   const [productos, setProductos] = useState([])
 
@@ -41,7 +41,7 @@ const SearchPage = ({agregarProductosCarrito}) => {
         { productos.length >0 ?
             productos.map((producto) =>{
                 return(
-                    <Item key={producto.id} producto = {producto} agregarProductosCarrito = {agregarProductosCarrito}/>
+                    <Item key={producto.id} producto = {producto}/>
                 )
             }):
             <p className='text-center p-3 text-primary w-50' style={{backgroundColor:"#e3f2fd"}}> <b className='rounded-circle btn btn-outline-primary mx-4'><span className='text-primary p-1'>!</span></b>No se han encontrado productos que coincidan con tu eleccion</p>

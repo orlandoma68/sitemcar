@@ -30,7 +30,7 @@ body{
     display: flex;
     background-color: #8ec3eb;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;    
 }
 
 .icon{
@@ -69,6 +69,7 @@ a{
 .contenedor{
     max-width: 1440px;
     width: 100%;
+    display: flex;
 }
 
 @media(max-width:768px){

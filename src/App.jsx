@@ -1,13 +1,16 @@
 
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+import {Toaster} from "react-hot-toast"
 
 import RootLayout from './layouts/RootLayout'
 import PublicLayout from './layouts/PublicLayout'
+import AdminLayout from './layouts/AdminLayout'
+import AuthLayout from './layouts/AuthLayout'
 
-import HomePage from './pages/Public/HomePage'
-import ContactPage from './pages/Public/ContactPage'
-import AboutPage from './pages/Public/AboutPage'
-import NotFoundPage from './pages/Public/NotFoundPage'
+import HomePage from './pages/public/HomePage'
+import ContactPage from './pages/public/ContactPage'
+import AboutPage from './pages/public/AboutPage'
+import NotFoundPage from './pages/public/NotFoundPage'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -15,97 +18,64 @@ import Footer from './components/Footer'
 import Listproducts from './components/Listproducts'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
-import { useState } from 'react'
-import SearchPage from './pages/Public/SearchPage'
+import Checkout from './components/Checkout'
 
+import SearchPage from './pages/public/SearchPage'
+import DasboardPage from './pages/admin/DasboardPage'
+import ProfilePage from './pages/admin/ProfilePage'
+import RegisterPage from './pages/auth/RegisterPage'
+import LoginPage from './pages/auth/LoginPage'
+import LostPassPage from './pages/auth/LostpassPage'
+
+import { AuthContextProvider } from './context/AuthContext'
+import { CarritoContextProvider } from './context/CarritoContext';
 
 const App = () => {
 
-  const [carrito, setCarrito] = useState([])
-
-  const [estaProductoCarrito, setEstaProductoCarrito] = useState(false)
-
-  const [cantProductosId, setCantProductosId] = useState(1)
-
-  //agregar Productos al carrito de compras
-  const agregarProductosCarrito = (prod)=>{
-
-    const siExisteProductosEnCarrito = carrito.find((car) => car.id === prod.id);
-
-    if (siExisteProductosEnCarrito) {
-      setCarrito(carrito.map((car) =>car.id === prod.id ? { ...car, cantidad: car.cantidad + 1 }: car));
-      setCantProductosId(siExisteProductosEnCarrito.cantidad+1)
-
-    } else {      
-      setCarrito([...carrito, {...prod, cantidad: 1 }]);
-      setCantProductosId(1)
-      setEstaProductoCarrito(true)
-    }  
-
-  }
-  //devuelve cantidad de productos en carrito
-  const cantidadProductosCarrito = ()=>{
-    return carrito.reduce((acc,prod)=>acc+prod.cantidad,0)
-  }
-
-  const cantidad = cantidadProductosCarrito()
-
-  //calculo del total de precios de los productos
-  const totalPagar = ()=>{
-    const total = (carrito.reduce((acc, prod)=> acc+(prod.precio * prod.cantidad),0)).toFixed(2)
-    return total
-  }
-
-  const eliminarProductosCarrito =(prod)=>{
-    const nuevoCarrito = [...carrito]
-    const productoEnCarrito = nuevoCarrito.filter((producto)=>producto.id !== prod.id)
-    setCarrito(productoEnCarrito)
-    setEstaProductoCarrito(false)
-}
-
-const sacarProductosCarrito = (prod)=>{
-  
-  const siExisteProductosEnCarrito = carrito.find((car) => car.id === prod.id);
-
-  if (siExisteProductosEnCarrito) {
-    setCarrito(carrito.map((car) =>car.id === prod.id ? { ...car, cantidad: car.cantidad -1 }: car));
-    setCantProductosId(siExisteProductosEnCarrito.cantidad-1)
-  } else {      
-    setCarrito([...carrito, {...prod, cantidad: 1 }]);
-    setEstaProductoCarrito(true)
-    setCantProductosId(1)
-  }  
-}
-
-  //vaciar carrito
-  const vaciarCarrito = ()=>{
-    setCarrito([])
-  }
-
   return ( 
     
-          <Router>
-            <Header cantidad = {cantidad}/>            
+      <Router>
+        <AuthContextProvider>
+          <CarritoContextProvider>
+            <Header/>            
             <Routes>
               {/* inicio de root  layout*/}
               <Route element={<RootLayout/>}>
+
                 {/* inicio de ruta publica*/}
                 <Route element={<PublicLayout/>}>
-                    <Route index element={<HomePage agregarProductosCarrito = {agregarProductosCarrito} />}/>
+                    <Route index element={<HomePage/>}/>
                     <Route path='contact' element={<ContactPage />}/>
                     <Route path='about' element={<AboutPage />}/>
-                    <Route path='category/:categoria' element={<Listproducts agregarProductosCarrito = {agregarProductosCarrito} />}/>
-                    <Route path='search/:termino' element={<SearchPage agregarProductosCarrito = {agregarProductosCarrito} />}/>
+                    <Route path='category/:categoria' element={<Listproducts />}/>
+                    <Route path='search/:termino' element={<SearchPage />}/>
                     <Route path='*' element={<NotFoundPage />}/>
-                    <Route path='item/:id' element ={<Itemdetailcontain agregarProductosCarrito = {agregarProductosCarrito} carrito = {carrito} estaProductoCarrito = {estaProductoCarrito} setEstaProductoCarrito = {setEstaProductoCarrito} cantProductosId = {cantProductosId} setCantProductosId = {setCantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito}/>}/>
-                    <Route path='carrito' element ={<Carrito carrito = {carrito} vaciarCarrito = {vaciarCarrito} cantidadProductosCarrito = {cantidadProductosCarrito} totalPagar = {totalPagar} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito = {sacarProductosCarrito} agregarProductosCarrito ={ agregarProductosCarrito }/>}/>
+                    <Route path='item/:id' element ={<Itemdetailcontain />}/>
+                    <Route path='carrito' element ={<Carrito />}/>
+                    <Route path="checkout" element={<Checkout />} />
                 </Route>
-                {/*fin de ruta publica*/}
+
+                {/* ruta Administracion*/}
+                <Route path='admin' element={<AdminLayout />}>
+                    <Route index element={<DasboardPage />}/>
+                    <Route path='profile' element={<ProfilePage />}/>
+                </Route>
+
+                {/* ruta autenticacion*/}
+                <Route path='auth' element={<AuthLayout />}>
+                    <Route path='login' element={<LoginPage/>}/>
+                    <Route path='register' element={<RegisterPage />}/>
+                    <Route path='lostpass' element={<LostPassPage />}/>
+                </Route>
+
               </Route>
               {/* fin de root layout*/}
             </Routes>
             <Footer />
-          </Router>  
+          </CarritoContextProvider>
+        </AuthContextProvider>
+      <Toaster/>
+    </Router>  
   )
 }
 

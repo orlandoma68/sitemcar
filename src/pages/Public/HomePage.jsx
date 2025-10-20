@@ -1,12 +1,13 @@
 import React from 'react'
 import Listproducts from '../../components/Listproducts'
 import Carrusel from '../../components/Carrusel'
+import Pagination from '../../components/Pagination'
 
-const HomePage = ({agregarProductosCarrito}) => {
+const HomePage = () => {
   return (
     <div>
       <Carrusel/>
-      <Listproducts agregarProductosCarrito={agregarProductosCarrito} />
+      <Listproducts/>
     </div>
   )
 }

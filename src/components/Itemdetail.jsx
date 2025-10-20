@@ -1,7 +1,10 @@
-import React, {useState } from 'react'
+import React, {useContext, useState } from 'react'
 import ItemCount from './ItemCount'
+import { CarritoContext } from '../context/CarritoContext'
 
-const Itemdetail = ({item, agregarProductosCarrito, estaProductoCarrito, cantProductosId, eliminarProductosCarrito, sacarProductosCarrito}) => {
+const Itemdetail = ({item}) => {
+
+    const {agregarProductosCarrito,eliminarProductosCarrito,sacarProductosCarrito, estaProductoCarrito,cantidadPorProducto} = useContext(CarritoContext)
 
   return (
     <>
@@ -27,7 +30,7 @@ const Itemdetail = ({item, agregarProductosCarrito, estaProductoCarrito, cantPro
                                 handleEliminarCarrito={()=>{eliminarProductosCarrito(item)}} 
                                 handleAgregarCarrito = {()=>{agregarProductosCarrito(item)}} 
                                 estaProductoCarrito = {estaProductoCarrito}
-                                cantProductosId = {cantProductosId}
+                                cantidadPorProducto = {cantidadPorProducto}
                             />
                         </div>    
                 </div>

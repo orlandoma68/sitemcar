@@ -1,8 +1,8 @@
 
-export const pedirProductos = ()=>{
-    return new Promise ((resolve, reject) =>{
-        resolve(data)
-    })
+export const pedirProductos = async ()=>{
+    const response = await fetch("https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/")
+    const data = await response.json()
+    return data;
 }
 
 export const pedirProductosId = (id)=>{

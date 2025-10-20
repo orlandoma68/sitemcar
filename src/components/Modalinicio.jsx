@@ -3,14 +3,14 @@ import Modalcontenido from './Modalcontenido'
 import { Link } from 'react-router-dom'
 import { pedirProductosCategoriaUnicos } from '../js/pedirProductos'
 
-const Modalinicio = ({handleIsOpenMenu}) => {
+const Modalinicio = ( {handleIsOpenMenu} ) => {
   const [openModal, setOpenModal] = useState(false)
   const handleOpenModal = ()=> setOpenModal(true)
   const handleCloseModal = ()=> setOpenModal(false)
   const [productos, setProductos] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState()
-  
+
   useEffect(()=>{
         
     const obtenerProductos = async ()=>{
@@ -36,9 +36,11 @@ const Modalinicio = ({handleIsOpenMenu}) => {
 
   return (
     <div className='modal-inicio'>
-      <Link className="nav-link text-white" onMouseEnter={handleOpenModal} to="#"><i className="fa-solid fa-bars mx-1"></i>Categoria</Link> 
-      <Modalcontenido handleOpenModal ={openModal} handleCloseModal = {handleCloseModal} handleIsOpenMenu= {()=>handleIsOpenMenu(false)}>
-        <div className='bg-light' onMouseLeave={handleCloseModal}>        
+      {/*abre el modal*/ }
+      <Link className="nav-link text-white" onMouseEnter={handleOpenModal}   to="#"><i className="fa-solid fa-bars mx-1"></i>Categoria</Link>
+
+      <Modalcontenido handleOpenModal ={openModal} handleCloseModal = {handleCloseModal} handleIsOpenMenu= {handleIsOpenMenu}>
+        <div className='bg-light' onMouseLeave={handleCloseModal}>     
             <ul className="mr-auto mx-3 p-3 d-flex" style={{overflowX:'auto'}}>
                 {productos && productos.map(prod => {
                    return <li key={prod.id} onClick={handleCloseModal} className='mx-2 nav-link'><Link className='text-dark link-primary link-offset-3 link-underline-opacity-0 link-underline-opacity-100-hover' to= {`/category/${prod.categoria}`} > {prod.categoria}</Link></li>})                
@@ -46,7 +48,7 @@ const Modalinicio = ({handleIsOpenMenu}) => {
             </ul>
         </div>
       </Modalcontenido>
-    </div>
+      </div>
   )
 }
 

@@ -1,9 +1,12 @@
-import React, {useEffect, useState } from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import Itemdetail from './Itemdetail'
-import { useFetcher, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Spinner from './Spinner'
+import { CarritoContext } from '../context/CarritoContext'
 
-const Itemdetailcontain = ( {carrito, agregarProductosCarrito,setEstaProductoCarrito, estaProductoCarrito, cantProductosId,setCantProductosId, eliminarProductosCarrito, sacarProductosCarrito } ) => {
+const Itemdetailcontain = () => {
+
+  const {carrito, setEstaProductoCarrito, setCantidadPorProducto}= useContext(CarritoContext)
 
     const [item, setItem] = useState(null)
 
@@ -33,23 +36,24 @@ const Itemdetailcontain = ( {carrito, agregarProductosCarrito,setEstaProductoCar
   }, [id])
 
   useEffect(()=>{
-    const idFound = carrito.find((car) => car.id === id )
-    if(idFound) {
+    const estaProductoEnCarrito = carrito.find((car)=>car.id === (id))
+    if (estaProductoEnCarrito){
       setEstaProductoCarrito(true)
-      setCantProductosId(idFound.cantidad)
+      setCantidadPorProducto(estaProductoEnCarrito.cantidad)
     }else{
       setEstaProductoCarrito(false)
-      setCantProductosId(1)
-    };
+      setCantidadPorProducto(1)
+    }
   },[id])
-  
+
+
   if(isLoading) return <Spinner />
 
   if (error) return <p>{error}</p>
 
   return (
     <div>
-      <Itemdetail item = {item} agregarProductosCarrito = {agregarProductosCarrito} estaProductoCarrito = {estaProductoCarrito} cantProductosId = {cantProductosId} eliminarProductosCarrito = {eliminarProductosCarrito} sacarProductosCarrito={sacarProductosCarrito} />
+      <Itemdetail item = {item}  />
     </div>
   )
 }

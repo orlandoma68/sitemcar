@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Itemproduct from './Itemproduct'
 import {pedirProductosCategoria} from "../js/pedirProductos"
 import { useParams } from 'react-router-dom'
 import Spinner from './Spinner'
+import {pedirProductos} from "../js/pedirProductos"
+import Pagination from './Pagination'
 
-const Listproducts = ({agregarProductosCarrito}) => {
+const Listproducts = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -18,12 +19,9 @@ const Listproducts = ({agregarProductosCarrito}) => {
 
     useEffect(()=>{
         
-        const obtenerProductos = async ()=>{
-
+      const obtenerProductos = async ()=>{
         try {
-            const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/`)              
-            if(!respuesta.ok) throw new error ("Error en la busqueda")
-            const datos = await respuesta.json()
+            const datos = await pedirProductos()          
             pedirProductosCategoria(datos, categoria)
             .then((res)=>{
                 if(categoria){
@@ -41,7 +39,7 @@ const Listproducts = ({agregarProductosCarrito}) => {
           }finally{
             setIsLoading(false)
           }
-        }
+       }
 
         obtenerProductos()
 
@@ -56,7 +54,7 @@ const Listproducts = ({agregarProductosCarrito}) => {
         {productos && 
           <div>
               <h1 className='fs-4 bg-dark w-100 text-white py-2 text-center'>{tituloProducto}</h1>
-              <Itemproduct productos = {productos} agregarProductosCarrito ={agregarProductosCarrito}/> 
+              <Pagination productos = {productos} />
           </div>
         }
     </div>    
