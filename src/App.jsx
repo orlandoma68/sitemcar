@@ -6,7 +6,6 @@ import PublicLayout from './layouts/PublicLayout'
 import AdminLayout from './layouts/AdminLayout'
 import AuthLayout from './layouts/AuthLayout'
 
-import HomePage from './pages/public/HomePage'
 import ContactPage from './pages/public/ContactPage'
 import AboutPage from './pages/public/AboutPage'
 import NotFoundPage from './pages/public/NotFoundPage'
@@ -28,6 +27,8 @@ import LostPassPage from './pages/auth/LostpassPage'
 
 import { AuthContextProvider } from './context/AuthContext'
 import { CarritoContextProvider } from './context/CarritoContext';
+
+import HomePage from './pages/public/HomePage'
 
 const App = () => {
 
