@@ -20,13 +20,13 @@ import AdminLayout from './layouts/AdminLayout'
 import Footer from './components/Footer'
 import AuthLayout from './layouts/AuthLayout'
 import LostPassPage from './pages/auth/LostPassPage'
-import HomePage from './pages/public/HomePage'
-import SearchPage from './pages/public/SearchPage'
-import AboutPage from './pages/public/AboutPage'
-import NotFoundPage from './pages/public/NotFoundPage'
+import HomePage from './pages/Public/HomePage'
+import SearchPage from './pages/Public/SearchPage'
+import AboutPage from './pages/Public/AboutPage'
+import NotFoundPage from './pages/Public/NotFoundPage'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
-import ContactPage from './pages/public/ContactPage'
+import ContactPage from './pages/Public/ContactPage'
 
 const App = () => {
 
@@ -42,14 +42,14 @@ const App = () => {
 
                 {/* inicio de ruta publica*/}
                 <Route element={<PublicLayout/>}>
-                    <Route index element={<HomePage />}/>
+                    <Route index element={<HomePage />} />
                     <Route path='contact' element={<ContactPage />} />
-                    <Route path='about' element={<AboutPage />}/>
-                    <Route path='category/:categoria' element={<Listproducts />}/>
+                    <Route path='about' element={<AboutPage /> }/>
+                    <Route path='category/:categoria' element={<Listproducts /> }/>
                     <Route path='search/:termino' element={<SearchPage />}/>
-                    <Route path='*' element={<NotFoundPage />}/>
-                    <Route path='item/:id' element ={<Itemdetailcontain />}/>
-                    <Route path='carrito' element ={<Carrito />}/>
+                    <Route path='*' element={<NotFoundPage />} />
+                    <Route path='item/:id' element ={<Itemdetailcontain />} />
+                    <Route path='carrito' element ={<Carrito />} />
                     <Route path="checkout" element={<Checkout />} />
                 </Route>
 

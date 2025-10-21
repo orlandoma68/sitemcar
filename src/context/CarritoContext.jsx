@@ -3,11 +3,9 @@ import { createContext } from 'react'
 import { toast } from 'react-hot-toast'
 import { notific } from '../js/notificacion'
 
-export {CarritoContext, CarritoContextProvider}
+export const CarritoContext = createContext()
 
-const CarritoContext = createContext()
-
-const CarritoContextProvider = ( { children } ) => {
+export const CarritoContextProvider = ( { children } ) => {
 
     const [carrito, setCarrito] = useState([])
 

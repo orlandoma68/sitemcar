@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const NotFoundPage = () => {
   
   return (
-      <section className='container'>
+      <section className='Container'>
         <div className='col text-center'>
             <h1 className="titulo">  {'{ 4 0 4 }'}       </h1>
             <p>.......Pagina no encontrada......</p>
