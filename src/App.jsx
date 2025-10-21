@@ -14,7 +14,7 @@ import Checkout from './components/Checkout'
 import DasboardPage from './pages/admin/DasboardPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
-import SearchPage from './pages/public/SearchPage'
+
 import AboutPage from './pages/public/AboutPage'
 import NotFoundPage from './pages/public/NotFoundPage'
 import Itemdetailcontain from './components/Itemdetailcontain'
@@ -26,6 +26,7 @@ import Footer from './components/Footer'
 import AuthLayout from './layouts/AuthLayout'
 import LostPassPage from './pages/auth/LostPassPage'
 import HomePage from './pages/public/HomePage'
+import SearchPage from './pages/public/SearchPage'
 
 const App = () => {
 
