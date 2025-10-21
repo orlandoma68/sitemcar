@@ -8,7 +8,7 @@ import { CarritoContextProvider } from './context/CarritoContext'
 import Header from './components/Header'
 import RootLayout from './layouts/RootLayout'
 import PublicLayout from './layouts/PublicLayout'
-import HomePage from './pages/public/HomePage'
+
 import Listproducts from './components/Listproducts'
 import Checkout from './components/Checkout'
 import DasboardPage from './pages/admin/DasboardPage'
@@ -25,6 +25,7 @@ import AdminLayout from './layouts/AdminLayout'
 import Footer from './components/Footer'
 import AuthLayout from './layouts/AuthLayout'
 import LostPassPage from './pages/auth/LostPassPage'
+import HomePage from './pages/public/HomePage'
 
 const App = () => {
 
