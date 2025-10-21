@@ -14,11 +14,6 @@ import Checkout from './components/Checkout'
 import DasboardPage from './pages/admin/DasboardPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
-
-
-import NotFoundPage from './pages/public/NotFoundPage'
-import Itemdetailcontain from './components/Itemdetailcontain'
-import Carrito from './components/Carrito'
 import ContactPage from './pages/public/ContactPage'
 import ProfilePage from './pages/admin/ProfilePage'
 import AdminLayout from './layouts/AdminLayout'
@@ -28,6 +23,9 @@ import LostPassPage from './pages/auth/LostPassPage'
 import HomePage from './pages/public/HomePage'
 import SearchPage from './pages/public/SearchPage'
 import AboutPage from './pages/public/AboutPage'
+import NotFoundPage from './pages/public/NotFoundPage'
+import Itemdetailcontain from './components/Itemdetailcontain'
+import Carrito from './components/Carrito'
 
 const App = () => {
 
