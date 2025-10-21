@@ -27,9 +27,9 @@ export const AuthContextProvider = ({children})=>{
     const logout = async ()=> await signOut(auth)
 
     //autenticacion con cuenta google (firebase)
-    const singInWihtGoogle = ()=> {
+    const singInWithGoogle = async ()=> {
         const googleProvider = new GoogleAuthProvider()
-        return signInWithPopup(auth, googleProvider)     
+        return await signInWithPopup(auth, googleProvider)     
     }
 
     const resetPassword = async (email)=>{
@@ -42,7 +42,7 @@ export const AuthContextProvider = ({children})=>{
             signIn, 
             user, 
             logout, 
-            singInWihtGoogle, 
+            singInWithGoogle, 
             resetPassword}}>
             { children }
         </AuthContext.Provider>

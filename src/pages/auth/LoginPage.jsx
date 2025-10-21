@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 const LoginPage = () => {
 
-  const {signIn, singInWihtGoogle}=useContext(AuthContext)
+  const {signIn, singInWithGoogle}=useContext(AuthContext)
 
   const [error, setError] = useState(null)
 
@@ -25,7 +25,7 @@ const LoginPage = () => {
   const handleWithGoogle = async ()=>{
 
     try {
-      await singInWihtGoogle()  
+      await singInWithGoogle()
     } catch (error) {
       setError(error)
     }
