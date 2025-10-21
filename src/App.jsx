@@ -15,7 +15,7 @@ import DasboardPage from './pages/admin/DasboardPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
 
-import AboutPage from './pages/public/AboutPage'
+
 import NotFoundPage from './pages/public/NotFoundPage'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
@@ -27,6 +27,7 @@ import AuthLayout from './layouts/AuthLayout'
 import LostPassPage from './pages/auth/LostPassPage'
 import HomePage from './pages/public/HomePage'
 import SearchPage from './pages/public/SearchPage'
+import AboutPage from './pages/public/AboutPage'
 
 const App = () => {
 
