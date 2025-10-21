@@ -14,7 +14,7 @@ import Checkout from './components/Checkout'
 import DasboardPage from './pages/admin/DasboardPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
-import ContactPage from './pages/public/ContactPage'
+
 import ProfilePage from './pages/admin/ProfilePage'
 import AdminLayout from './layouts/AdminLayout'
 import Footer from './components/Footer'
@@ -26,6 +26,7 @@ import AboutPage from './pages/public/AboutPage'
 import NotFoundPage from './pages/public/NotFoundPage'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
+import ContactPage from './pages/public/ContactPage'
 
 const App = () => {
 
