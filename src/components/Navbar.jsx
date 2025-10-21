@@ -43,7 +43,7 @@ const Navbar = () => {
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/">Home <span className="sr-only">(current)</span></Link></li>
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/contact">Contact</Link></li>
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/about">About</Link></li>       
-                  <li><Modalinicio /></li>
+                  <li><Modalinicio activarMenu = {activarMenu} /></li>
                   <li>
                   <form onSubmit={handleSearchSubmit} className='d-flex'  >
                     <input  className='form-control mr-sm-2' type="ingrese un producto a buscar" placeholder='Buscar producto' aria-label="Search" value={searchTermino} onChange={handleSearchChange}/>
@@ -57,7 +57,7 @@ const Navbar = () => {
                   </li>
               </ul>
               </div>
-              <div >
+              <div onClick={()=>setIsOpenMenu(false)} >
                   <CarritoWidget cantidadProductosCarrito = {cantidadProductosCarrito}/>
               </div>          
               <div className='icon' onClick={activarMenu}>

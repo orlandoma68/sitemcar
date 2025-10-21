@@ -3,10 +3,13 @@ import Modalcontenido from './Modalcontenido'
 import { Link } from 'react-router-dom'
 import { pedirProductosCategoriaUnicos } from '../js/pedirProductos'
 
-const Modalinicio = ( {handleIsOpenMenu} ) => {
+const Modalinicio = ( {activarMenu} ) => {
   const [openModal, setOpenModal] = useState(false)
   const handleOpenModal = ()=> setOpenModal(true)
-  const handleCloseModal = ()=> setOpenModal(false)
+  const handleCloseModal = ()=> {
+    setOpenModal(false)
+    activarMenu(false)
+  }
   const [productos, setProductos] = useState()
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState()
@@ -39,7 +42,7 @@ const Modalinicio = ( {handleIsOpenMenu} ) => {
       {/*abre el modal*/ }
       <Link className="nav-link text-white" onMouseEnter={handleOpenModal}   to="#"><i className="fa-solid fa-bars mx-1"></i>Categoria</Link>
 
-      <Modalcontenido handleOpenModal ={openModal} handleCloseModal = {handleCloseModal} handleIsOpenMenu= {handleIsOpenMenu}>
+      <Modalcontenido handleOpenModal ={openModal} handleCloseModal = {handleCloseModal}>
         <div className='bg-light' onMouseLeave={handleCloseModal}>     
             <ul className="mr-auto mx-3 p-3 d-flex" style={{overflowX:'auto'}}>
                 {productos && productos.map(prod => {
