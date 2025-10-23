@@ -4,17 +4,20 @@ import PaginaActual from './PaginaActual'
 
 const Pagination = ({productos}) => {
 
-    const [cantidadProductos, setCantidadProductos] = useState(8)
+
+    const [totalProductos, setTotalProductos]= useState()
+    const [cantidadProductos, setCantidadProductos] = useState(6)
     const [numeroPaginaActual, setNumeroPaginaActual] = useState(1)
     const final = cantidadProductos * numeroPaginaActual
     const inicio = final - cantidadProductos
     const numeroDatos = productos.slice(inicio, final)
     const totalPaginas = Math.ceil(productos.length / cantidadProductos)
+    const totalproducts = productos.length
 
   return (
     <div>
         {numeroDatos && <Pages numeroDatos = {numeroDatos}/>}
-        <PaginaActual totalPaginas = {totalPaginas} numeroPaginaActual = {numeroPaginaActual} setNumerPaginaActual={setNumeroPaginaActual}/>
+        <PaginaActual totalproducts={totalproducts} totalPaginas = {totalPaginas} numeroPaginaActual = {numeroPaginaActual} setNumerPaginaActual={setNumeroPaginaActual}/>
     </div>
   )
 }

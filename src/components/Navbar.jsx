@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import CarritoWidget from './CarritoWidget'
 import Modalinicio from './Modalinicio'
 import { CarritoContext } from '../context/CarritoContext'
+import carritoimg from "../imagen/siscarblue.png"
+import { Search } from 'lucide-react';
 
 const Navbar = () => {
 
@@ -32,11 +34,11 @@ const Navbar = () => {
   } 
   
   return (
-      <header>
+      <header className='shadow'>
         <div className='contenedor'>
-          <nav className='w-100'>
-              <div>
-                <Link className='logo' to="/">SISCAR</Link>
+          <nav className='w-100 px-5'>
+              <div className='' >
+                <Link className='logo' to="/"><img className='img-fluid' style={{height: 80 +'px', objectFit:'cover'}  } src={carritoimg} alt="" /></Link>
               </div>
               <div>
               <ul className={isOpenMenu ?'navlink activate' : 'navlink'}>
@@ -47,7 +49,7 @@ const Navbar = () => {
                   <li>
                   <form onSubmit={handleSearchSubmit} className='d-flex'  >
                     <input  className='form-control mr-sm-2' type="ingrese un producto a buscar" placeholder='Buscar producto' aria-label="Search" value={searchTermino} onChange={handleSearchChange}/>
-                    <button className='btn btn-outline-primary mx-1' type='submit'>Search</button>
+                    <button className='btn btn-outline-primary mx-1' type='submit'><Search color='white' /></button>
                   </form>
                   </li>
                   <li>

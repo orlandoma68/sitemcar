@@ -1,8 +1,11 @@
 import React, {useContext, useState } from 'react'
 import ItemCount from './ItemCount'
 import { CarritoContext } from '../context/CarritoContext'
+import { AuthContext } from '../context/AuthContext'
 
 const Itemdetail = ({item}) => {
+
+    const {user} = useContext(AuthContext)
 
     const {agregarProductosCarrito,eliminarProductosCarrito,sacarProductosCarrito, estaProductoCarrito,cantidadPorProducto} = useContext(CarritoContext)
 
@@ -21,10 +24,13 @@ const Itemdetail = ({item}) => {
                             <h5 className="card-title">{item.nombre}</h5>
                             <h3 className="card-text">{item.categoria}</h3>
                             <p className="card-text">{item.descripcion}</p>
+                            {user ?
                             <p className="card-text fs-6"> 
                                 <sup>US$</sup> 
                                 <span className='text-dark fs-2' >{item.precio}</span>
-                            </p>
+                            </p>:
+                            <p className='card-text btn text-warning'>Iniciar sesión para ver precios</p>
+                            }
                             <ItemCount                                   
                                 handleSacarCarrito={()=>{sacarProductosCarrito(item)}} 
                                 handleEliminarCarrito={()=>{eliminarProductosCarrito(item)}} 

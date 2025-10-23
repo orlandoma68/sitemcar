@@ -28,7 +28,7 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className='container my-4'>
+    <div className='container my-5'>
       <div className='row justify-content-center'>
         <div className='border col col-lg-4 col-md-6 col-12'>
           {error && 
