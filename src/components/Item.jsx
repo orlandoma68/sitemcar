@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { CarritoContext } from '../context/CarritoContext'
 import { AuthContext } from '../context/AuthContext'
 
-const Item = ( { producto} ) => {
+const Item = ( { producto } ) => {
 
   const {user} = useContext(AuthContext)
 
@@ -19,8 +19,8 @@ const Item = ( { producto} ) => {
                 <p className="card-text px-2 my-1">{producto.descripcion.slice(0,60)+" ..."}</p>
 
                 {user ?
-                  <div className='d-flex justify-content-center my-2'> 
-                    <p className="card-text my-3 text-warning shadow border-0 rounded-circle"><sup>US$ </sup><span className='fs-5 my-2'>{producto.precio}</span></p>
+                  <div className='d-flex justify-content-center my-4'> 
+                    <p className="card-text mx-3 px-3 text-warning shadow border-0 rounded-circle"><sup>US$ </sup><span className='fs-5 my-3'>{producto.precio}</span></p>
                   </div>
                 :
                 <div className='my-3'>

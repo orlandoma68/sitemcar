@@ -54,6 +54,9 @@ const Carrito = ( ) => {
                       <div className='bg-white p-5 d-flex flex-column justify-content-center align-items-center w-100'>
                           <h4>El carrito esta vacio :) </h4>
                           <img className="img-fluid mt-3" style={{height: 150 +'px', objectFit:'cover'}  } src={carimg} alt={'carrito'} />
+                          <div className="d-flex justify-content-center">
+                            <Link className='btn btn-primary text-white btn-lg w-100 px-5 fs-6' aria-label="elegir producto" to="/"><span >Elegir productos</span></Link>
+                          </div>
                           <div className='m-3 d-flex align-items-center justify-content-center' style={{width: 350 +'px'}} >
                             <Link className='btn btn-outline-primary mx-2 my-2' to="../../auth/login"><span >Inicia en tu Cuenta</span></Link>
                             <Link className='btn btn-outline-primary mx-2 my-2' to="../../auth/register"><span >Registrate</span></Link>

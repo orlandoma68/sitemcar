@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom'
 
 const Carrusel = () => {
     
-  return (
-        <div id="carouselExampleControls" className="carousel slide d-flex justify-content-center p-4" style={{backgroundColor:'rgb(240, 240, 240)'}} data-bs-ride="carousel">
-            <div className="carousel-inner w-75" >
+  return (    
+    <div className='container'>
+        <div id="carouselExampleControls" className="row carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner col-12 col-md-6 col-lg-4" >
                 <div className="carousel-item active w-100"  data-bs-interval="3000">
-                    <Link to="auth/register"> <img src={banner1} alt="img-banner" className="img-fluid" style={{ height: 500 + "px", objectFit:'cover'}  }/></Link>
+                    <Link to="auth/register"> <img src={banner1} alt="img-banner" className="img-fluid" /></Link>
                 </div>
                 <div className="carousel-item active w-100"  data-bs-interval="3000">
-                    <Link to="auth/register"> <img src={banner2} alt="img-banner" className="img-fluid" style={{height: 500 + "px", objectFit:'cover'}  }/></Link>
+                    <Link to="auth/register"> <img src={banner2} alt="img-banner" className="img-fluid" /></Link>
                 </div>
                 <div className="carousel-item active w-100"  data-bs-interval="3000">
-                    <Link to="auth/register"> <img src={banner1}  alt="img-banner" className="img-fluid" style={{height: 500 + "px", objectFit:'cover'}  } /></Link>                                                        
+                    <Link to="auth/register"> <img src={banner1}  alt="img-banner" className="img-fluid"  /></Link>                                                        
                 </div>                    
             </div>
 
@@ -29,6 +30,7 @@ const Carrusel = () => {
                 <span className="visually-hidden">Siguiente</span>
             </button>            
         </div>
+    </div>
   )
 }
 

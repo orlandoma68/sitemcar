@@ -41,7 +41,7 @@ const Listproducts = () => {
           }
        }
 
-        obtenerProductos()
+      obtenerProductos()
 
     },[categoria])
 

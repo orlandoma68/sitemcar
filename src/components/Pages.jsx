@@ -1,10 +1,10 @@
 import React from 'react'
 import Itemproduct from './Itemproduct'
 
-const Pages = ({numeroDatos}) => {  
+const Pages = ({productosActuales}) => {  
   return (
     <div>        
-      <Itemproduct numeroDatos = {numeroDatos} />
+      <Itemproduct productosActuales = {productosActuales} />
     </div>
   )
 }
