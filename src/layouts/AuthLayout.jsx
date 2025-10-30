@@ -3,12 +3,12 @@ import { useContext } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 
-const AuthLayout = ({redirectPath = "/admin"}) => {
+const AuthLayout = () => {
 
   const {user} = useContext(AuthContext)
 
   if(user){
-    return <Navigate to ={redirectPath } replace></Navigate>
+    return <Navigate to ='/admin' replace></Navigate>
   }
   return (
     <div>

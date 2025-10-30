@@ -10,7 +10,7 @@ const Item = ( { producto } ) => {
   const {agregarProductosCarrito} = useContext(CarritoContext)
   
   return (
-    <div className='d-flex justify-content-center py-5' style={ {width: 22 +'rem', margin:50+"px"} }>
+    <div className='d-flex justify-content-center py-3' style={ {width: 22 +'rem', margin:50+"px"} }>
         <div className="card p-0 fs-8 border-0 shadow" style={ {width:600 +'px'}}>
             <img src={producto.imagen} alt={producto.nombre} className="img-fluid w-100" style={{height: 200 +'px', objectFit:'cover'}  }/>
             <div className='text-center py-4'>

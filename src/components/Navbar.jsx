@@ -54,7 +54,7 @@ const Navbar = () => {
                   </li>
                   <li>
                   <div className='d-flex' >
-                    <Link onClick={()=>setIsOpenMenu(false)} className='text-white' to="/auth/login">Login</Link>
+                    <Link onClick={()=>setIsOpenMenu(false)} className='text-white' to="/auth/login">Administracion</Link>
                   </div>
                   </li>
               </ul>

@@ -27,6 +27,7 @@ import NotFoundPage from './pages/Public/NotFoundPage'
 import Itemdetailcontain from './components/Itemdetailcontain'
 import Carrito from './components/Carrito'
 import ContactPage from './pages/Public/ContactPage'
+import ShowProductsPage from './pages/admin/ShowProductsPage'
 
 const App = () => {
 
@@ -57,13 +58,13 @@ const App = () => {
                 <Route path='admin' element={<AdminLayout />}>
                     <Route index element={<DasboardPage />}/>
                     <Route path='profile' element={<ProfilePage />}/>
+                    <Route path='listar' element={<ShowProductsPage />} />
                 </Route>
 
                 {/* ruta autenticacion*/}
                 <Route path='auth' element={<AuthLayout />}>
                     <Route path='login' element={<LoginPage/>}/>
-                    <Route path='register' element={<RegisterPage />}/>
-                    <Route path='lostpass' element={<LostPassPage />} />
+                    <Route path='register' element={<RegisterPage />}/>                    
                 </Route>
 
               </Route>

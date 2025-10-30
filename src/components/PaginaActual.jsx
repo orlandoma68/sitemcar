@@ -13,14 +13,17 @@ const PaginaActual = ({totalPaginas, numeroPaginaActual, setNumerPaginaActual,to
 
       <div className='container'>
           <div className='row'>
-              <div className='d-flex justify-content-center align-items-center'>
-                <h5 className='opacity-50 btn btn-outline-primary' onClick={handlePrev}>{'<'}Anterior  </h5>
-                {Array.from({length:totalPaginas}, (_, index) => (
-                  <button key= {index + 1} className={`btn mx-1 mb-2 ${numeroPaginaActual === index + 1 ? "btn-primary" : "btn-outline-primary"}`} onClick={()=>cambiarPagina(index + 1)}>
-                    {index+1}         
-                  </button>
-                ))}
-                <h5 className='opacity-50 btn btn-outline-primary' onClick={handleNext}>Siguiente{'>'} </h5>
+              <div className='d-flex col-12 col-md-6 col-lg-4 justify-content-center align-items-center w-100'>
+                <div className='w-100 d-flex justify-content-center'>
+                  <h5 className='opacity-50 btn btn-outline-primary border-0' onClick={handlePrev}>{'<'}Anterior  </h5>
+                  {Array.from({length:totalPaginas}, (_, index) => (
+                    
+                    <button key= {index + 1} className={`btn mb-2 ${numeroPaginaActual === index + 1 ? "btn-primary border-0" : "btn-outline-primary border-0"}`} onClick={()=>cambiarPagina(index + 1)}>
+                      {index+1}         
+                    </button>
+                  ))}
+                  <h5 className='opacity-50 btn btn-outline-primary border-0' onClick={handleNext}>Siguiente{'>'} </h5>
+                </div>
               </div>    
           </div>
           <div className='d-flex justify-content-center'>            

@@ -52,7 +52,7 @@ const Listproducts = () => {
   return (
     <div>    
         {productos && 
-          <div className='my-5'>
+          <div className='my-4'>
               <h1 className='fs-3 w-100 text-dark py-2 text-center'>{tituloProducto}</h1>
               <hr />
               <Pagination productos = {productos} />

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import NavarAdmin from '../components/NavarAdmin'
 
 const AdminLayout = ({redirectPath = '/auth/login'}) => {
     
@@ -12,6 +13,7 @@ const AdminLayout = ({redirectPath = '/auth/login'}) => {
 
   return (
     <div>
+      <NavarAdmin/>
       <Outlet/>
     </div>
   )
