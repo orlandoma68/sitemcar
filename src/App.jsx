@@ -5,7 +5,7 @@ import {Toaster} from "react-hot-toast"
 import { AuthContextProvider } from './context/AuthContext'
 import { CarritoContextProvider } from './context/CarritoContext'
 
-import Header from './components/Header'
+//import Header from './components/Header'
 import RootLayout from './layouts/RootLayout'
 import PublicLayout from './layouts/PublicLayout'
 
@@ -36,11 +36,9 @@ const App = () => {
       <Router>
         <AuthContextProvider>
           <CarritoContextProvider>
-            <Header />
             <Routes>
               {/* inicio de root  layout*/}
               <Route element={<RootLayout/>}>
-
                 {/* inicio de ruta publica*/}
                 <Route element={<PublicLayout/>}>
                     <Route index element={<HomePage />} />

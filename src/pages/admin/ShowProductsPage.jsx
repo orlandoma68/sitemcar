@@ -1,23 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import { showAlert } from '../../js/notificacion'
 import { pedirProductos } from '../../js/pedirProductos'
-import { CircleX, PlusCircle,RotateCcw } from 'lucide-react'
-const ShowProductsPage = () => {
-    
-    const [productos, setProductos] = useState([])
-    const [error, setError] = useState()
+import { CircleX, DollarSign, Gift, Layers, MessageCircle, PlusCircle,RotateCcw, Save, TagIcon, UserLockIcon } from 'lucide-react'
+
+const ShowProductsPage = ({onAgregar}) => {
+
+    const [errores, setErrores] = useState({})
+    const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-
-    const [id, setId] = useState()
-    const [nombre, setNombre] = useState('')
-    const [descripcion, setDescripcion] = useState('')
-    const [categoria, setCategoria] = useState('')
-    const [precio, setPrecio] = useState()
-    const [stock, setStock] = useState()
-
     const [operacion, setOperacion] = useState(1)
     const [titulo, setTitulo] = useState('')
+    const [productos, setProductos] = useState([])
+    const [producto, setProducto] = useState({
+        id:'',nombre:'', descripcion:'', categoria:'', imagen:'', precio:'', stock:''
+    });
 
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setProducto({...producto, [name]: value})
+    }
+
+    const handlesubmit = (e) => {
+        e.preventDefault();
+        if(validarDatosFormulario() && operacion === 1){
+            agregarProducto(producto);
+            setProducto({nombre:'', descripcion:'', categoria:'',imagen:'', precio:'', stock:''})
+            setErrores({})    
+        }else{
+            if(validarDatosFormulario() && operacion === 2){
+                actualizarProducto(producto);
+                setProducto({nombre:'', descripcion:'', categoria:'',imagen:'', precio:'', stock:''})
+                setErrores({})
+            }
+        }
+    }
 
     useEffect(()=>{
         obtenerProductos()
@@ -32,27 +48,112 @@ const ShowProductsPage = () => {
         }
     }
 
-    const openModal = (op, id, nombre, descripcion, categoria, precio,stock)=>{
-        setId("")
-        setNombre("")
-        setDescripcion("")
-        setCategoria("")
-        setPrecio("")
-        setStock("")
-        setOperacion(op)
-        if (Number(op) === 1){
-            setTitulo('Registrar Producto')
-        }else{
-            setTitulo("Editar Producto")
-            setId(id)
-            setNombre(nombre)
-            setDescripcion(descripcion)
-            setCategoria(categoria)
-            setPrecio(precio)
-            setStock(stock)
+    //validar datos del formulario para agregar productos
+    const validarDatosFormulario = () => {
+
+        const nuevosErrores = {}
+
+        if(!producto.nombre.trim()){
+            nuevosErrores.nombre = 'El nombre del producto es obligatorio'
+        }
+        if(!producto.descripcion.trim()){
+            nuevosErrores.descripcion = 'La descripcion del producto es obligatoria'
+        }
+        if(!producto.categoria.trim()){
+            nuevosErrores.categoria = 'La categoria del producto es obligatoria'
+        }
+        if(!producto.precio || producto.precio <= 0){
+            nuevosErrores.precio = 'El precio del producto debe ser mayor o igual a cero'
+        }
+        
+        setErrores(nuevosErrores)
+
+        return Object.keys(nuevosErrores).length === 0
+    }
+
+    //agregar productos a la API
+    const agregarProducto = async (producto) => {
+
+        try {                        
+            const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/`, {
+                method: 'POST', 
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8' 
+                },
+                body: JSON.stringify(producto)
+            })
+
+            if(!respuesta.ok){
+                throw new Error ('Error en la solicitud')
+            }
+
+            const data = await respuesta.json()
+            console.log("producto agregado", data)
+            alert("Producto agregado correctamente")
+                    
+        } catch (error) {
+            console.error("Error al enviar la solicitud", error)
+            alert("Error al agregar el producto")            
+        }
+    }
+    
+
+    const actualizarProducto = async (producto) => {
+        try {                        
+            const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/${producto.id}`, {
+                method: 'PUT', 
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8' 
+                },
+                body: JSON.stringify(producto)
+            })
+            
+            if(!respuesta.ok){
+                throw new Error ('Error en la solicitud')
+            }
+
+            const data = await respuesta.json()
+            console.log("producto actualizado", data)
+            alert("Producto actualizado correctamente")
+                    
+        } catch (error) {
+            console.error("Error al enviar la solicitud", error)
+            alert("Error al actualizar el producto")            
         }
     }
 
+    const eliminarProducto = async(id)=>{
+
+        try {                        
+            const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/${id}`, {
+                method: 'DELETE'
+            })
+            
+            if(!respuesta.ok){
+                throw new Error ('Error en la solicitud')
+            }
+
+            console.log("producto eliminado")
+            alert("Producto eliminado correctamente")
+                    
+        } catch (error) {
+            console.error(error.message)
+            alert("Hubo Error al eliminar el producto")            
+        }
+
+    }
+
+    const openModal = (op, id, nombre, descripcion, categoria,imagen, precio,stock)=>{
+        setProducto({nombre:'', descripcion:'', categoria:'',imagen:'', precio:'', stock:''})
+        setOperacion(op)
+        if (Number(op) === 1){
+            setTitulo('Registrar Producto')
+        }else if (Number (op) === 2){
+            setTitulo("Editar Producto")
+            setProducto({id:id,nombre:nombre, descripcion:descripcion, categoria:categoria,imagen:imagen, precio:precio, stock:stock})
+        }
+    }
+     
   return (
         <div>
             <div className='container-fluid'>
@@ -67,15 +168,16 @@ const ShowProductsPage = () => {
                 </div>
             
                 <div className='row mt-3'>
-                    <div className='col-12 col-lg-8 offset-0 offset-lg-2'>
+                    <div className='col-12 col-lg-9 offset-0 offset-lg-0 w-100'>
                         <div className='table-responsive'>
-                            <table className='table table-bordered'>
+                            <table className='table table-bordered w-auto'>
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
+                                        <th className='col-2'>Nombre</th>
+                                        <th className='col-3'>Descripcion</th>
                                         <th>Categoria</th>
+                                        <th>Url</th>
                                         <th>Precio</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -87,10 +189,11 @@ const ShowProductsPage = () => {
                                         <td>{prod.nombre}</td>
                                         <td>{prod.descripcion}</td>
                                         <td>{prod.categoria}</td>
+                                        <td>{prod.imagen}</td>
                                         <td>{prod.precio}</td>
                                         <td className='d-flex justify-content-center'>
-                                            <button className='btn btn-outline-primary mx-1' onClick={()=>openModal(2,prod.id, prod.nombre, prod.descripcion,prod.categoria, prod.precio)} data-bs-toggle='modal' data-bs-target='#modalProducts'>Editar</button>
-                                            <button className='btn btn-outline-danger' >Eliminar</button>
+                                            <button className='btn btn-outline-primary mx-1' onClick={()=>openModal(2,prod.id, prod.nombre, prod.descripcion,prod.categoria,prod.imagen, prod.precio)} data-bs-toggle='modal' data-bs-target='#modalProducts'>Editar</button>
+                                            <button className='btn btn-outline-danger' onClick={()=>eliminarProducto(prod.id)} >Eliminar</button>
                                         </td>
                                     </tr>
                                 ))}
@@ -108,29 +211,38 @@ const ShowProductsPage = () => {
                         <label className= 'h5'>{titulo}</label>
                         <button type='button' className='btn-close ' data-bs-dismiss = "modal" aria-label="close"></button>
                     </div>      
-                    <div className='modal-body'>
-                        <input type="hidden" id= "id" />
-                        <div className='input-group mb-3'>
-                            <span className='input-group-text'></span>
-                            <input className='opacity-50 border-1 w-75 p-2' onChange={(e)=>setNombre(e.target.value)} type="text" id='nombre' placeholder='Nombre' value={nombre} />                            
-                        </div>
-                        <div className='input-group mb-3'>
-                            <span className='input-group-text'></span>
-                            <input className='opacity-50 border-1 w-75 p-2' onChange={(e)=>setDescripcion(e.target.value)} type="text" id='descripcion' placeholder='Descripcion' value={descripcion} />                            
-                        </div>
-                        <div className='input-group mb-3'>
-                            <span className='input-group-text'></span>
-                            <input className='opacity-50 border-1 w-75 p-2' onChange={(e)=>setCategoria(e.target.value)} type="text" id='categoria' placeholder='Categoria' value={categoria} />                            
-                        </div>
-                        <div className='input-group mb-3'>
-                            <span className='input-group-text'></span>
-                            <input className='opacity-50 border-1 w-75 p-2' onChange={(e)=>setPrecio(e.target.value)} type="text" id='precio' placeholder='precio' value={precio} />                            
-                        </div>
+                    <div className='modal-body d-flex justify-content-center'>
+                        <form onSubmit={handlesubmit}>                            
+                            <input type="hidden" id= "id" />
+                            <div className='input-group mb-2'>
+                                <span className='input-group-text'><Gift/></span>
+                                <input className='opacity-50 border-1 w-75 p-2' onChange={handleChange} type="text" name='nombre' placeholder='Nombre' value={producto.nombre}  />                            
+                                {errores.nombre && <p className='fs-9 mx-5' style={{color:'red'}}>{errores.nombre}</p>}
+                            </div>
+                            <div className='input-group mb-2'>
+                                <span className='input-group-text'><MessageCircle/></span>
+                                <textarea className='opacity-50 border-1 w-75 p-2' rows={3} cols={45} name='descripcion'  value={producto.descripcion} onChange={handleChange} placeholder='Descripcion' requerid />
+                                {errores.descripcion && <p className='fs-9 mx-5' style={{color:'red'}}>{errores.descripcion}</p>}
+                            </div>
+                            <div className='input-group mb-2'>
+                                <span className='input-group-text'><Layers/></span>
+                                <input className='opacity-50 border-1 w-75 p-2' onChange={handleChange} type="text" name='categoria' placeholder='Categoria' value={producto.categoria} />                            
+                                {errores.categoria && <p className='fs-9 mx-5' style={{color:'red'}}>{errores.categoria}</p>}
+                            </div>
+                            <div className='input-group mb-2'>
+                                <span className='input-group-text'><UserLockIcon/></span>
+                                <input className='opacity-50 border-1 w-75 p-2' onChange={handleChange} type="text" name='imagen' placeholder='Url de imagen' value={producto.imagen} />                            
+                            </div>
+                            <div className='input-group mb-3'>
+                                <span className='input-group-text'><DollarSign/></span>
+                                <input className='opacity-50 border-1 w-75 p-2' onChange={handleChange} type="number" name='precio' placeholder='Precio' value={producto.precio} />                            
+                                {errores.precio && <p className='fs-9 mx-5' style={{color:'red'}}>{errores.precio}</p>}
+                            </div>
 
-                        <div className = 'modal-footer d-flex justify-content-center my-4'>
-                            <button className='btn btn-success mx-3'><RotateCcw/> Actualizar</button>
-                            <button className='btn btn-danger mx-3 '><CircleX/> Cancelar</button>
-                        </div>      
+                            <div className = 'modal-footer d-flex justify-content-center mb-3'>
+                                <button type='submit' className='btn btn-primary p-2 w-75'>{Number(operacion)===1?<Save/>:<RotateCcw/>} {Number(operacion)===1 ? "Guardar":"Actualizar"} </button>
+                            </div>      
+                        </form>
                     </div>
                 </div>      
             </div>  
