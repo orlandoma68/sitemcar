@@ -4,7 +4,7 @@ import CarritoWidget from './CarritoWidget'
 import Modalinicio from './Modalinicio'
 import { CarritoContext } from '../context/CarritoContext'
 import carritoimg from "../imagen/siscarblue.png"
-import { Home, Landmark, MenuIcon, Search, User } from 'lucide-react';
+import { Home, Landmark, MenuIcon, Search, User, UserLockIcon } from 'lucide-react';
 
 const navegacion = [
   {name:"Home", href:"/", icon: Home},
@@ -53,7 +53,7 @@ const Navbar = () => {
                   </NavLink>
                 ))}  
               </div>      
-              <div className='navlink'>
+              <div className='navlink text-white'>
                   <Modalinicio />
               </div>
               <form onSubmit={handleSearchSubmit} className='d-flex navlink'  >
@@ -85,9 +85,13 @@ const Navbar = () => {
                           </NavLink>
                         ))}  
                     </div>
-                    <div>
+
+                    <div className='text-primary mx-1 my-2'>
                         <Modalinicio/>                    
                     </div>          
+                    <div className='d-flex mx-4 mb-3' >
+                      <Link className='text-primary mx-1' to="/auth/login"><UserLockIcon/> Administracion</Link>
+                    </div>
 
                     <div className='modal-footer bg-dark d-flex justify-content-center'>
                         <p className="mb-0 text-center text-white">&copy; 2025 Siscar-OMP. All rights reserved.</p>
