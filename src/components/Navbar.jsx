@@ -86,10 +86,10 @@ const Navbar = () => {
                         ))}  
                     </div>
 
-                    <div className='text-primary mx-1 my-2'>
+                    <div className='text-primary mx-1 my-2' data-bs-dismiss = "modal">
                         <Modalinicio/>                    
                     </div>          
-                    <div className='d-flex mx-4 mb-3' >
+                    <div className='d-flex mx-4 mb-3' data-bs-dismiss = "modal" >
                       <Link className='text-primary mx-1' to="/auth/login"><UserLockIcon/> Administracion</Link>
                     </div>
 
