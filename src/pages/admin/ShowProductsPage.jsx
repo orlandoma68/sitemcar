@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { showAlert } from '../../js/notificacion'
+import { notific, showAlert } from '../../js/notificacion'
+import { toast } from 'react-hot-toast'
 import { pedirProductos } from '../../js/pedirProductos'
 import { CircleX, DollarSign, Gift, Layers, MessageCircle, PlusCircle,RotateCcw, Save, TagIcon, UserLockIcon } from 'lucide-react'
+import { set } from 'react-hook-form'
 
-const ShowProductsPage = ({onAgregar}) => {
+const ShowProductsPage = () => {
 
     const [errores, setErrores] = useState({})
     const [error, setError] = useState(null)
@@ -11,9 +13,14 @@ const ShowProductsPage = ({onAgregar}) => {
     const [operacion, setOperacion] = useState(1)
     const [titulo, setTitulo] = useState('')
     const [productos, setProductos] = useState([])
+    const [confirmar, setConfirmar] = useState(false)
     const [producto, setProducto] = useState({
         id:'',nombre:'', descripcion:'', categoria:'', imagen:'', precio:'', stock:''
     });
+
+    const handleClikEliminar = () => {
+        setConfirmar(true)
+    }
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -89,15 +96,15 @@ const ShowProductsPage = ({onAgregar}) => {
 
             const data = await respuesta.json()
             console.log("producto agregado", data)
-            alert("Producto agregado correctamente")
+            toast.success(`Producto ${producto.nombre} se agregó correctamente`, notific);
+            obtenerProductos()
                     
         } catch (error) {
             console.error("Error al enviar la solicitud", error)
-            alert("Error al agregar el producto")            
+            toast.error(`Error al agregar el producto`, notific);
         }
     }
     
-
     const actualizarProducto = async (producto) => {
         try {                        
             const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/${producto.id}`, {
@@ -114,16 +121,15 @@ const ShowProductsPage = ({onAgregar}) => {
 
             const data = await respuesta.json()
             console.log("producto actualizado", data)
-            alert("Producto actualizado correctamente")
-                    
+            toast.success(`Producto ${producto.nombre} se actualizo correctamente`, notific);
+            obtenerProductos()
         } catch (error) {
             console.error("Error al enviar la solicitud", error)
-            alert("Error al actualizar el producto")            
+            toast.error(`Error al actualizar el producto`, notific);        
         }
     }
 
     const eliminarProducto = async(id)=>{
-
         try {                        
             const respuesta = await fetch(`https://68d41b8f214be68f8c686c74.mockapi.io/api/v1/productos/${id}`, {
                 method: 'DELETE'
@@ -134,13 +140,18 @@ const ShowProductsPage = ({onAgregar}) => {
             }
 
             console.log("producto eliminado")
-            alert("Producto eliminado correctamente")
-                    
+            toast.success(`Producto ${producto.nombre} se ha elminado correctamente`, notific);
+            obtenerProductos()
         } catch (error) {
             console.error(error.message)
-            alert("Hubo Error al eliminar el producto")            
+            toast.error(`Hubo Error al eliminar el producto`, notific);
         }
 
+    }
+
+    if (confirmar){
+        eliminarProducto(producto.id)
+        setConfirmar(false)
     }
 
     const openModal = (op, id, nombre, descripcion, categoria,imagen, precio,stock)=>{
@@ -148,10 +159,17 @@ const ShowProductsPage = ({onAgregar}) => {
         setOperacion(op)
         if (Number(op) === 1){
             setTitulo('Registrar Producto')
-        }else if (Number (op) === 2){
+        }
+        if (Number (op) === 2){
             setTitulo("Editar Producto")
             setProducto({id:id,nombre:nombre, descripcion:descripcion, categoria:categoria,imagen:imagen, precio:precio, stock:stock})
         }
+
+        if (Number (op) === 3){
+            setTitulo("Eliminar Producto")
+            setProducto({id:id,nombre:nombre, descripcion:descripcion, categoria:categoria,imagen:imagen, precio:precio, stock:stock})
+        }
+
     }
      
   return (
@@ -193,7 +211,7 @@ const ShowProductsPage = ({onAgregar}) => {
                                         <td>{prod.precio}</td>
                                         <td className='d-flex justify-content-center'>
                                             <button className='btn btn-outline-primary mx-1' onClick={()=>openModal(2,prod.id, prod.nombre, prod.descripcion,prod.categoria,prod.imagen, prod.precio)} data-bs-toggle='modal' data-bs-target='#modalProducts'>Editar</button>
-                                            <button className='btn btn-outline-danger' onClick={()=>eliminarProducto(prod.id)} >Eliminar</button>
+                                            <button className='btn btn-outline-danger' onClick={()=>openModal(3,prod.id, prod.nombre, prod.descripcion,prod.categoria,prod.imagen, prod.precio)} data-bs-toggle='modal' data-bs-target='#modalConfirm'>Eliminar </button>
                                         </td>
                                     </tr>
                                 ))}
@@ -221,7 +239,7 @@ const ShowProductsPage = ({onAgregar}) => {
                             </div>
                             <div className='input-group mb-2'>
                                 <span className='input-group-text'><MessageCircle/></span>
-                                <textarea className='opacity-50 border-1 w-75 p-2' rows={3} cols={45} name='descripcion'  value={producto.descripcion} onChange={handleChange} placeholder='Descripcion' requerid />
+                                <textarea className='opacity-50 border-1 w-75 p-2' rows={3} cols={45} name='descripcion'  value={producto.descripcion} onChange={handleChange} placeholder='Descripcion' />
                                 {errores.descripcion && <p className='fs-9 mx-5' style={{color:'red'}}>{errores.descripcion}</p>}
                             </div>
                             <div className='input-group mb-2'>
@@ -240,9 +258,27 @@ const ShowProductsPage = ({onAgregar}) => {
                             </div>
 
                             <div className = 'modal-footer d-flex justify-content-center mb-3'>
-                                <button type='submit' className='btn btn-primary p-2 w-75'>{Number(operacion)===1?<Save/>:<RotateCcw/>} {Number(operacion)===1 ? "Guardar":"Actualizar"} </button>
+                                <button type='submit' className='btn btn-primary p-2 w-75' >{Number(operacion)===1?<Save/>:<RotateCcw/>} {Number(operacion)===1 ? "Guardar":"Actualizar"} </button>
                             </div>      
                         </form>
+                    </div>
+                </div>      
+            </div>  
+        </div>    
+
+        <div id='modalConfirm' className='modal fade' aria-hidden='true'>
+            <div className = 'modal-dialog'>            
+                <div className = 'modal-content'>
+                    <div className = 'modal-header'>                    
+                        <label className= 'h5'>{titulo}</label>
+                        <button type='button' className='btn-close ' data-bs-dismiss = "modal" aria-label="close"></button>
+                    </div>      
+                    <div className='modal-body d-flex justify-content-center'>
+                        <h5>¿Está seguro de eliminar el producto {producto.nombre}?</h5>
+                    </div>
+                    <div className='modal-footer'>
+                        <button className='btn btn-warning' onClick={handleClikEliminar} data-bs-dismiss = "modal">Confirmar</button>
+                        <button className='btn btn-danger' data-bs-dismiss = "modal">Cancelar</button>
                     </div>
                 </div>      
             </div>  
