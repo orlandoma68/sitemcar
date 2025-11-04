@@ -1,10 +1,16 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import CarritoWidget from './CarritoWidget'
 import Modalinicio from './Modalinicio'
 import { CarritoContext } from '../context/CarritoContext'
 import carritoimg from "../imagen/siscarblue.png"
-import { Search } from 'lucide-react';
+import { Home, Landmark, MenuIcon, Search, User } from 'lucide-react';
+
+const navegacion = [
+  {name:"Home", href:"/", icon: Home},
+  {name:"Contacto", href:"/contact", icon: User},
+  {name:"Nosotros", href:"/about", icon: Landmark}
+]
 
 const Navbar = () => {
 
@@ -40,6 +46,69 @@ const Navbar = () => {
               <div className='' >
                 <Link className='logo' to="/"><img className='img-fluid' style={{height: 80 +'px', objectFit:'cover'}  } src={carritoimg} alt="" /></Link>
               </div>
+              <div className='navlink'>
+                { navegacion.map((item)=>(
+                  <NavLink key={item.name} to={item.href} className="d-flex text-white mx-2">
+                      <item.icon className='mx-1'/>{item.name}
+                  </NavLink>
+                ))}  
+              </div>      
+              <div className='navlink'>
+                  <Modalinicio />
+              </div>
+              <form onSubmit={handleSearchSubmit} className='d-flex navlink'  >
+                  <input  className='form-control mr-sm-2' type="ingrese un producto a buscar" placeholder='Buscar producto' aria-label="Search" value={searchTermino} onChange={handleSearchChange}/>
+                  <button className='btn btn-outline-primary mx-1' type='submit'><Search color='white' /></button>
+              </form>
+              <div className='d-flex navlink' >
+                  <Link className='text-white' to="/auth/login">Administracion</Link>
+              </div>
+              <div >
+                  <CarritoWidget cantidadProductosCarrito = {cantidadProductosCarrito}/>
+              </div>          
+              <div className='icon'>
+                <button className='btn btn-outline-dark' data-bs-toggle = 'modal' data-bs-target = '#modalMenu'><MenuIcon/>Menu</button>
+              </div>
+          </nav>
+
+          <div id='modalMenu' className='modal fade' aria-hidden='true' >
+            <div className = 'modal-dialog'>            
+                <div className = 'modal-content' style={{backgroundColor:"#e3f2fd"}}>
+                    <div className = 'modal-header'>                    
+                        <label className= 'h5'>Siscar</label>
+                        <button type='button' className='btn-close ' data-bs-dismiss = "modal" aria-label="close"></button>
+                    </div>      
+                    <div className='modal-body d-flex justify-content-center flex-column' data-bs-dismiss = "modal">
+                        { navegacion.map((item)=>(
+                          <NavLink key={item.name} to={item.href} className="d-flex mx-2 my-1">
+                              <item.icon className='mx-1'/>{item.name}
+                          </NavLink>
+                        ))}  
+                    </div>
+                    <div>
+                        <Modalinicio/>                    
+                    </div>          
+
+                    <div className='modal-footer bg-dark d-flex justify-content-center'>
+                        <p className="mb-0 text-center text-white">&copy; 2025 Siscar-OMP. All rights reserved.</p>
+                    </div>
+                </div>      
+            </div>  
+        </div>    
+        </div>
+      </header>
+  )
+}
+
+
+/*
+
+      <header className='shadow'>
+        <div className='contenedor'>
+          <nav className='w-100 px-5'>
+              <div className='' >
+                <Link className='logo' to="/"><img className='img-fluid' style={{height: 80 +'px', objectFit:'cover'}  } src={carritoimg} alt="" /></Link>
+              </div>
               <div>
               <ul className={isOpenMenu ?'navlink activate' : 'navlink'}>
                   <li onClick={()=>setIsOpenMenu(false)}><Link className='text-white' to="/">Home <span className="sr-only">(current)</span></Link></li>
@@ -68,7 +137,6 @@ const Navbar = () => {
           </nav>    
         </div>
       </header>
-  )
-}
+*/
 
 export default Navbar

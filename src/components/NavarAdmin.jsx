@@ -17,14 +17,15 @@ const NavarAdmin = () => {
   return (
     <div>
       <header>
-        <nav className='d-flex justify-content-center align-items-center py-2'>
+        <nav className='d-flex justify-content-center align-items-center py-2 shadow'>
             { navegacion.map((item)=>(
                 <NavLink key={item.name} to={item.href} className="d-flex text-white mx-2">
-                    <item.icon className='mx-1'/>{item.name}
+                    <item.icon className='mx-2'/>{item.name}
                 </NavLink>
             ))}         
-            <button onClick={logout} className='btn btn-dark mx-5'><LogOut/> Cerrar Sesion</button>
-        </nav>
+            <div></div>
+            <button onClick={logout} className='btn btn-outline-danger text-white border-0 mx-5'><LogOut/>Cerrar Sesion</button>
+        </nav>              
       </header>
     </div>
   )
