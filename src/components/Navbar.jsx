@@ -42,7 +42,7 @@ const Navbar = () => {
   return (
       <header className='shadow'>
         <div className='contenedor'>
-          <nav className='w-100 px-5'>
+          <nav className='w-100 mx-3'>
               <div className='' >
                 <Link className='logo' to="/"><img className='img-fluid' style={{height: 80 +'px', objectFit:'cover'}  } src={carritoimg} alt="" /></Link>
               </div>

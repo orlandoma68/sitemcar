@@ -15,16 +15,17 @@ const NavarAdmin = () => {
     const {logout} = useContext(AuthContext)
         
   return (
-    <div>
-      <header>
-        <nav className='d-flex justify-content-center align-items-center py-2 shadow'>
+    <div className='w-100 shadow '>
+      <header className='d-flex justify-content-center w-100'>
+        <nav className='d-flex justify-content-center align-items-center py-1 w-100'>
+          <div className='d-flex justify-content-center w-100'>
             { navegacion.map((item)=>(
-                <NavLink key={item.name} to={item.href} className="d-flex text-white mx-2">
-                    <item.icon className='mx-2'/>{item.name}
+                <NavLink key={item.name} to={item.href} className="text-white mx-1">
+                    <item.icon className='mx-1'/>{item.name}
                 </NavLink>
-            ))}         
-            <div></div>
-            <button onClick={logout} className='btn btn-outline-danger text-white border-0 mx-5'><LogOut/>Cerrar Sesion</button>
+            ))}
+            </div>         
+            <button onClick={logout} className='btn btn-outline-danger text-white border-0'><LogOut/>Cerrar Sesion</button>
         </nav>              
       </header>
     </div>

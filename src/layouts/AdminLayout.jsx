@@ -12,7 +12,7 @@ const AdminLayout = ({redirectPath = '/auth/login'}) => {
     }
 
   return (
-    <div>
+    <div className='w-100'>
       <NavarAdmin/>
       <Outlet/>
     </div>
