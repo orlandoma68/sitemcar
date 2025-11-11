@@ -8,14 +8,14 @@ const Carrusel = () => {
   return (    
     <div className='container'>
         <div id="carouselExampleControls" className="row carousel slide" data-bs-ride="carousel">
-            <div className="carousel-inner col-12 col-md-6 col-lg-4" >
-                <div className="carousel-item active w-100"  data-bs-interval="3000">
+            <div className="carousel-inner" >
+                <div className="carousel-item active"  data-bs-interval="3000">
                     <Link to="auth/register"> <img src={banner1} alt="img-banner" className="img-fluid" /></Link>
                 </div>
-                <div className="carousel-item active w-100"  data-bs-interval="3000">
+                <div className="carousel-item active "  data-bs-interval="3000">
                     <Link to="auth/register"> <img src={banner2} alt="img-banner" className="img-fluid" /></Link>
                 </div>
-                <div className="carousel-item active w-100"  data-bs-interval="3000">
+                <div className="carousel-item active "  data-bs-interval="3000">
                     <Link to="auth/register"> <img src={banner1}  alt="img-banner" className="img-fluid"  /></Link>                                                        
                 </div>                    
             </div>

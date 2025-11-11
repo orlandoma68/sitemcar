@@ -22,11 +22,13 @@ const PaginaActual = ({totalPaginas, numeroPaginaActual, setNumerPaginaActual,to
               <div className='col-12 col-md-6 col-lg-4 w-100'>
                   <div className='px-5 d-flex justify-content-center align-items-center w-100 cont'>
                     <h3 className='opacity-50 btn btn-outline-primary border-0' onClick={handlePrev} disabled ={numeroPaginaActual === 1} >{'<'}Anterior  </h3>
-                    {numbers.map((num) => (
-                    <button key= {num} className={`btn ${numeroPaginaActual === num ? "btn-primary border-0" : "btn-outline-primary border-0"}`} onClick={()=>cambiarPagina(num)}>
+                    <div className='d-flex justify-content-center'>
+                    {numbers.map((num) => (                         
+                    <button key= {num} className={`btn px-2 ${numeroPaginaActual === num ? "btn-primary border-0" : "btn-outline-primary border-0"}`} onClick={()=>cambiarPagina(num)}>
                       {num} 
                     </button>
                     ))}
+                    </div>
                     <h3 className='opacity-50 btn btn-outline-primary border-0' onClick={handleNext} disabled = {numeroPaginaActual === totalPaginas} >Siguiente{'>'} </h3>
                   </div>
                 </div>    
